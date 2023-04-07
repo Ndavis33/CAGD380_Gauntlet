@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b2b93c3c2001842b532d5d70e815d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRb: {fileID: 0}
+  speed: 5
+  rotateSpeed: 15
+  weapon: {fileID: 4782753657759128314}
 --- !u!114 &1342457566626497783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +175,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4a849a6a-2c2b-4d1a-bdc4-a5f702c38685
     m_ActionName: Player/Rotation[/Keyboard/a,/Keyboard/d,/DualShock4GamepadHID/rightStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1342457566626497782}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Melee
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fcb5c1e7-42e3-4505-be13-f67ec3ef5223
+    m_ActionName: Player/Melee[/DualShock4GamepadHID/buttonSouth,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -293,7 +311,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342457567050819887}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &1342457567050819883
 MonoBehaviour:
   m_ObjectHideFlags: 0
