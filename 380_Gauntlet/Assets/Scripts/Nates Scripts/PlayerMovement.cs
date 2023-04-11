@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 5.0f;
     [SerializeField]
     private float rotateSpeed = 15.0f;
-
+    
    
     private Vector2 moveInput = Vector2.zero;
 
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private PlayerInput inputs;
     public GameObject weapon;
+   // public GameObject Camera;
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -29,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-     
+       // Camera.transform.position = this.transform.position;
         Vector3 move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
         controller.Move(move * speed * Time.deltaTime);
     }
