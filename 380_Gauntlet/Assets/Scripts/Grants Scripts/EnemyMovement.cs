@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
     }
 
     private void FixedUpdate()
