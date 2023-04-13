@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,18 +14,23 @@ public class PlayerMovement : MonoBehaviour
    
     private Vector2 moveInput = Vector2.zero;
 
-    private bool throwWeapon = false;
-  
+    //private bool throwWeapon = false;
+    private Vector3 throwDistance = new Vector3(1, 0, 0);
     private CharacterController controller;
     private PlayerInput inputs;
-    public GameObject weapon;
+   // public GameObject weapon;
+    public GameObject ThrowingStick;
    // public GameObject Camera;
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
-        weapon = transform.Find("Stick").gameObject;
-        weapon.SetActive(false);
+
+
+
+
+       // weapon = transform.Find("Stick").gameObject;
+       // weapon.SetActive(false);
       
     }
 
@@ -33,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
        // Camera.transform.position = this.transform.position;
         Vector3 move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
         controller.Move(move * speed * Time.deltaTime);
+        
     }
 
 
@@ -44,16 +51,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Throwing(InputAction.CallbackContext context)
     {
-        throwWeapon = context.ReadValue<bool>();
-        throwWeapon = context.action.triggered;
-
+       // throwWeapon = context.ReadValue<bool>();
+        //throwWeapon = context.action.triggered;
+        Instantiate(ThrowingStick, this.transform.position, transform.rotation);
+       // ThrowingStick.transform.position += transform.forward;
         Debug.Log("Player Should Throw");
     }
 
+   
     public void Melee(InputAction.CallbackContext context)
     {
-        StartCoroutine(MeleeSpeed());
-        Debug.Log("Player Should Melee");
+       // StartCoroutine(MeleeSpeed());
+       // Debug.Log("Player Should Melee");
     }
 
     public void Rotate(InputAction.CallbackContext context)
@@ -67,9 +76,9 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator MeleeSpeed()
     {
-      weapon.SetActive(true);
+      //weapon.SetActive(true);
        yield return new WaitForSeconds(0.25f);
-      weapon.SetActive(false);
+     // weapon.SetActive(false);
     }
 
 }
