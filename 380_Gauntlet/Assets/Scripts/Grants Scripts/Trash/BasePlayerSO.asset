@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783b68b8eb82be14a9d4b3e0bd7f14ef, type: 3}
   m_Name: BasePlayerSO
   m_EditorClassIdentifier: 
-  localSpeed: 0
-  localDefense: 0
-  localPhysicalDamage: 0
-  localMagicDamage: 0
+  warriorSO: {fileID: 0}
+  localSpeed: 5
+  localDefense: 10
+  localPhysicalDamage: 5
+  localMagicDamage: 5

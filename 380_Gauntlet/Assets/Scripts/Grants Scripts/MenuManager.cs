@@ -173,9 +173,9 @@ public class MenuManager : MonoBehaviour
         if (avatarColor == _red)
             return "Warrior";
         else if (avatarColor == _blue)
-            return "Wizard";
-        else if (avatarColor == _yellow)
             return "Valkyrie";
+        else if (avatarColor == _yellow)
+            return "Wizard";
         else return "Elf";
     }
 

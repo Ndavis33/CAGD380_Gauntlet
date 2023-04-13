@@ -7,6 +7,8 @@ public class PlayerScriptableObject : ScriptableObject
 {
     public float localSpeed;
     public float localDefense;
-    public float localPhysicalDamage;
+    public float localRangeDamage;
+    public float localMeleeDamage;
+    public float localShotSpeed;
     public float localMagicDamage;
 }

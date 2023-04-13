@@ -2796,7 +2796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Valkyrie
+  m_Text: Wizard
 --- !u!222 &1570857767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2971,7 +2971,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Wizard
+  m_Text: Valkyrie
 --- !u!222 &1596410723
 CanvasRenderer:
   m_ObjectHideFlags: 0
