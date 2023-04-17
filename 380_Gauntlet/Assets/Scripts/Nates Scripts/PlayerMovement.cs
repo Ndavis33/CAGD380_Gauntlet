@@ -9,25 +9,28 @@ public class PlayerMovement : MonoBehaviour
    [SerializeField]
     private float speed = 5.0f;
     [SerializeField]
-    private float rotateSpeed = 15.0f;
+    private float rotateSpeed = 45.0f;
     
    
     private Vector2 moveInput = Vector2.zero;
 
     //private bool throwWeapon = false;
-    private Vector3 throwDistance = new Vector3(1, 0, 0);
+   // private Vector3 throwDistance = new Vector3(1, 0, 0);
     private CharacterController controller;
     private PlayerInput inputs;
    // public GameObject weapon;
     public GameObject ThrowingStick;
-   // public GameObject Camera;
+    // public GameObject Camera; 
+
+    public bool ToggleInvisibility = false;
+    public bool hasKey;
+
+    private bool turnFirst = false;
+
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
-
-
-
 
        // weapon = transform.Find("Stick").gameObject;
        // weapon.SetActive(false);
@@ -36,9 +39,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+       
        // Camera.transform.position = this.transform.position;
         Vector3 move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
-        controller.Move(move * speed * Time.deltaTime);
+         controller.Move(move * speed * Time.deltaTime);
         
     }
 
@@ -46,7 +51,9 @@ public class PlayerMovement : MonoBehaviour
     public void Moving(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-      
+       
+
+
     }
 
     public void Throwing(InputAction.CallbackContext context)
@@ -74,11 +81,12 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Player Should Rotate");
     }
 
-    private IEnumerator MeleeSpeed()
+    private IEnumerator Potion()
     {
-      //weapon.SetActive(true);
-       yield return new WaitForSeconds(0.25f);
-     // weapon.SetActive(false);
+     
+        //Potion code...
+       yield return new WaitForSeconds(3);
+     
     }
 
 }
