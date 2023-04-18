@@ -5,17 +5,22 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     //private GameObject _warrior, _valkyrie, _wizard, _elf;
-    private GameObject closestTarget;
-    private Vector3 targetPos;
-    private bool attackingPlayer;
+    protected GameObject closestTarget;
+    protected Vector3 targetPos;
+    protected bool attackingPlayer;
     protected float speed;
     protected int damage;
-    private List<TestMovement> _targets = new List<TestMovement>();
+    protected List<TestMovement> _targets = new List<TestMovement>();
 
-    private void Start()
+    protected virtual void Init()
     {
         speed = 3f;
         damage = 25;
+    }
+
+    private void Start()
+    {
+        Init();
 
         foreach (TestMovement target in GameObject.FindObjectsOfType<TestMovement>())
         {
@@ -24,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         float minDistanceFromTarget = 420.69f;
         foreach (TestMovement target in _targets)
@@ -35,17 +40,15 @@ public class EnemyMovement : MonoBehaviour
                 {
                     minDistanceFromTarget = Vector3.Distance(this.transform.position, target.transform.position);
                     closestTarget = target.gameObject;
-
                 }
-                
-            }
-                
+            }               
         }
 
         Debug.Log("Closest Target: " + closestTarget.name);
         targetPos = closestTarget.transform.position;
         this.transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.fixedDeltaTime);       
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Player"))
@@ -64,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator DamagePlayer(GameObject player)
+    protected virtual IEnumerator DamagePlayer(GameObject player)
     {
         //example player stats for testing
         damage = 25;
@@ -95,7 +98,5 @@ public class EnemyMovement : MonoBehaviour
             
         }
         
-        
-
     }
 }
