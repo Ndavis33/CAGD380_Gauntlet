@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     //private GameObject _warrior, _valkyrie, _wizard, _elf;
+    public EnemyScriptableObject enemySO;
     protected GameObject closestTarget;
     protected Vector3 targetPos;
     protected bool attackingPlayer;
@@ -46,7 +47,32 @@ public class EnemyMovement : MonoBehaviour
 
         Debug.Log("Closest Target: " + closestTarget.name);
         targetPos = closestTarget.transform.position;
-        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.fixedDeltaTime);       
+
+        if (enemySO.isCoward)
+        {
+            if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
+            {
+                this.transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.fixedDeltaTime);
+            }
+            else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
+            {
+                //RunAway();
+                Debug.Log("Running");
+            }
+            else
+            {
+                if (!attackingPlayer)
+                {
+                    attackingPlayer = true;
+                    //LobObject();
+                    Debug.Log("Lobbing");
+                }
+            }
+        }
+        else
+            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.fixedDeltaTime);   
+
+            
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -54,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Player"))
         {
             attackingPlayer = true;
-            StartCoroutine(DamagePlayer(collision.collider.gameObject));
+            StartCoroutine(MeleePlayer(collision.collider.gameObject));
          
         }
     }
@@ -67,7 +93,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator DamagePlayer(GameObject player)
+    protected virtual IEnumerator MeleePlayer(GameObject player)
     {
         //example player stats for testing
         damage = 25;

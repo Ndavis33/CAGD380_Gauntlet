@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lobber : EnemyMovement
+public class LobberMovement : EnemyMovement
 {
     private float minAttackRange = 14f;
     private float maxAttackRange = 20f;
     [SerializeField]
     //private float attackRate;
     //public GameObject itemToLob;
-  
+
     protected override void Init()
     {
         speed = 5f;
@@ -34,11 +34,11 @@ public class Lobber : EnemyMovement
         Debug.Log("Closest Target: " + closestTarget.name);
         targetPos = closestTarget.transform.position;
 
-        if(Vector3.Distance(this.transform.position, targetPos) > maxAttackRange)
+        if (Vector3.Distance(this.transform.position, targetPos) > maxAttackRange)
         {
             this.transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.fixedDeltaTime);
         }
-        else if(Vector3.Distance(this.transform.position, targetPos) < minAttackRange)
+        else if (Vector3.Distance(this.transform.position, targetPos) < minAttackRange)
         {
             RunAway();
             Debug.Log("Running");
@@ -51,10 +51,7 @@ public class Lobber : EnemyMovement
                 LobObject();
                 Debug.Log("Lobbing");
             }
-            
         }
-        
-        
     }
 
     private void LobObject()
@@ -64,6 +61,6 @@ public class Lobber : EnemyMovement
 
     private void RunAway()
     {
-            //TODO
+        //TODO
     }
 }
