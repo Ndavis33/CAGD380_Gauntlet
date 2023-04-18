@@ -31,7 +31,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": ""Movement"",
                     ""type"": ""PassThrough"",
                     ""id"": ""638daaab-ebc5-4715-8dbf-de14467222e6"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -47,9 +47,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotation"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""4a849a6a-2c2b-4d1a-bdc4-a5f702c38685"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -144,7 +144,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""WASD"",
-                    ""id"": ""d85ff624-4485-4bdd-acb2-574390d59514"",
+                    ""id"": ""81274296-1277-4ef5-81bb-3f1560bd4e55"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -155,7 +155,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""5043f8d8-5569-4d40-b2ff-09f0fc9d8b4d"",
+                    ""id"": ""4dfab032-69b2-4991-aa7e-3248cdc46298"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -166,7 +166,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""7391cadc-baea-41b9-a76f-a852a667e27c"",
+                    ""id"": ""dfc5c8cd-dde7-4eaf-a38c-1e14d0985674"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -177,7 +177,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""246d2ae8-219f-40eb-82a0-40e727608607"",
+                    ""id"": ""50bad07b-ae05-4909-acb1-87bbc9a6256a"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -188,7 +188,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""3056108a-8922-4753-ad27-e6a05e42c160"",
+                    ""id"": ""a2c7d164-bdcf-4c88-922b-0d6159c60745"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
