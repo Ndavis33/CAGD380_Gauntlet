@@ -7,8 +7,8 @@ public class Lobber : EnemyMovement
     private float minAttackRange = 14f;
     private float maxAttackRange = 20f;
     [SerializeField]
-    private float attackRate;
-    public GameObject itemToLob;
+    //private float attackRate;
+    //public GameObject itemToLob;
   
     protected override void Init()
     {
@@ -41,6 +41,7 @@ public class Lobber : EnemyMovement
         else if(Vector3.Distance(this.transform.position, targetPos) < minAttackRange)
         {
             RunAway();
+            Debug.Log("Running");
         }
         else
         {
@@ -48,6 +49,7 @@ public class Lobber : EnemyMovement
             {
                 attackingPlayer = true;
                 LobObject();
+                Debug.Log("Lobbing");
             }
             
         }
