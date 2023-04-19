@@ -15,4 +15,6 @@ public class EnemyScriptableObject : ScriptableObject
     public bool isCoward;
     [Tooltip("Check this to make the enemy repeatedly become invisible and invulnerable")]
     public bool canBlink;
+    [Tooltip("Checking this makes the enemy disable on collision")]
+    public bool isSuicidal;
 }

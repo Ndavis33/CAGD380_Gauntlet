@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class LobberMovement : EnemyMovement
 {
+    /* Trashed Class
+     * 
     private float minAttackRange = 14f;
     private float maxAttackRange = 20f;
     [SerializeField]
     //private float attackRate;
     //public GameObject itemToLob;
-
-    protected override void Init()
-    {
-        speed = 5f;
-        damage = 3;
-    }
 
     protected override void FixedUpdate()
     {
@@ -63,4 +59,5 @@ public class LobberMovement : EnemyMovement
     {
         //TODO
     }
+    */
 }

@@ -4,49 +4,49 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public Transform c0, c1, c2, c3;
+    private EnemyMovement _enemy;
 
-    public Vector3 p0123;
+    private Vector3 startPos;
 
-    public float timeDuration = 1f;
-    public float u;
-    public float timeStart;
+    private float _positionOffset = 5.0f;
+    private float _speed = 5;
+    private float _timeStart;
 
-    public bool checkToCalculate = false;
-    public bool moving = false;
+    private bool _projecting;
 
-
-
-
-    void Update()
+    private void Awake()
     {
-        if (checkToCalculate)
+        _enemy = gameObject.GetComponentInParent<EnemyMovement>();
+    }
+
+    private void OnEnable()
+    {
+        startPos = _enemy.gameObject.transform.position;
+        startPos.y += _positionOffset;
+        this.transform.position = startPos;
+
+        _timeStart = Time.time;
+
+        _projecting = true;
+    }
+
+    private void Update()
+    {
+        if (_projecting)
         {
-            checkToCalculate = false;
-            moving = true;
-            timeStart = Time.time;
+            Debug.Log("Projecting");
+            //I am 95% sure I didn't use this method right
+            float u = (Time.time - _timeStart) / _speed;
+            Vector3.Lerp(this.transform.position, _enemy.targetPos, u);
         }
 
-        if (moving)
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Player"))
         {
-            u = (Time.time - timeStart) / timeDuration;
-            if (u >= 1)
-            {
-                u = 1;
-                moving = false;
-            }
-
-            Vector3 p01, p12, p23, p012, p123;
-            p01 = (1 - u) * c0.position + u * c1.position;
-            p12 = (1 - u) * c1.position + u * c2.position;
-            p23 = (1 - u) * c2.position + u * c3.position;
-
-            p012 = (1 - u) * p01 + u * p12;
-            p123 = (1 - u) * p12 + u * p23;
-
-            p0123 = (1 - u) * p012 + u * p123;
-
-            transform.position = p0123;
+            this.gameObject.SetActive(false);
         }
     }
 }
