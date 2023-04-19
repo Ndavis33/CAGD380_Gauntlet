@@ -8,12 +8,11 @@ public class PlayerMovement : MonoBehaviour
 {
    [SerializeField]
     private float speed = 5.0f;
-    [SerializeField]
-    private float rotateSpeed = 90.0f;
+   
     
    
-    private Vector2 moveInput = Vector2.zero;
-
+    private Vector3 moveInput = Vector3.zero;
+    private Vector3 move = Vector3.zero;
     //private bool throwWeapon = false;
    // private Vector3 throwDistance = new Vector3(1, 0, 0);
     private CharacterController controller;
@@ -24,9 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool ToggleInvisibility = false;
     public bool hasKey;
+    public bool isMoving = true;
+    public bool isThrowing = false;
 
-    private bool turnFirst = false;
-
+  
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -39,70 +39,77 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-       // Camera.transform.position = this.transform.position;
-         Vector3 move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
-         controller.Move(move * speed * Time.deltaTime);
-        
+        if (isMoving)
+        {
+            move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
+            controller.Move(move * speed * Time.deltaTime);
+            if (move.magnitude > 0)
+            {
+                transform.rotation = Quaternion.LookRotation(move);
+            }
+        }
+       // Camera.transform.position = this.transform.position;     
     }
 
 
     public void Moving(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-       
+       // moveInput = context.ReadValue<Vector3>();
+        if (!isThrowing)
+        {
+            moveInput = context.ReadValue<Vector3>();
+        }
+        
     }
 
 
     //Logic for proper player movement
     
-  public void MoveUp(InputAction.CallbackContext _up)
+  public void Stop(InputAction.CallbackContext _up)
   {
-          //   moveInput = _up.ReadValue<Vector2>();
-           //  float CurrentDirection = _up.ReadValue<float>();
-           //  transform.Rotate(0f, CurrentDirection * rotateSpeed, 0f);
-          }
+        moveInput = Vector2.zero;
+       
+    }
         
 
 
     public void Throwing(InputAction.CallbackContext context)
     {
-       // throwWeapon = context.ReadValue<bool>();
-        //throwWeapon = context.action.triggered;
-       // Instantiate(ThrowingStick, this.transform.position, transform.rotation);
-        // ThrowingStick.transform.position += transform.forward;
-        // Debug.Log("Player Should Throw");
         if (context.performed)
         {
+            StartCoroutine(firingPause());
             Instantiate(ThrowingStick, this.transform.position, transform.rotation);
         }
         if (context.canceled)
         {
+            
             return;
+          
         }
     }
 
-   
     public void Melee(InputAction.CallbackContext context)
     {
        // StartCoroutine(MeleeSpeed());
        // Debug.Log("Player Should Melee");
     }
 
-    public void Rotate(InputAction.CallbackContext context)
-    {
-        float CurrentDirection = context.ReadValue<float>();
-        // transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed * CurrentDirection);
-        transform.Rotate(0f, CurrentDirection * rotateSpeed, 0f);
-
-       // Debug.Log("Player Should Rotate");
-    }
-
+   
     private IEnumerator Potion()
     {
      
         //Potion code...
        yield return new WaitForSeconds(3);
      
+    }
+
+    private IEnumerator firingPause()
+    {
+
+        isMoving = false;
+        yield return new WaitForSeconds(1f);
+        isMoving = true;
+        
     }
 
 }
