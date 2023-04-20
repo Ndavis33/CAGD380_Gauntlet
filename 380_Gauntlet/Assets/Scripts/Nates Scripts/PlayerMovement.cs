@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-   [SerializeField]
-    private float speed = 5.0f;
-   
-    
+
+    private float speed = 0f;
+    public PlayerSO BasePlayer;
+ 
    
     private Vector3 moveInput = Vector3.zero;
     private Vector3 move = Vector3.zero;
@@ -31,14 +31,15 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
+        speed = BasePlayer.baseSpeed;
+        // weapon = transform.Find("Stick").gameObject;
+        // weapon.SetActive(false);
 
-       // weapon = transform.Find("Stick").gameObject;
-       // weapon.SetActive(false);
-      
     }
 
     private void FixedUpdate()
     {
+      
         if (isMoving)
         {
             move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);

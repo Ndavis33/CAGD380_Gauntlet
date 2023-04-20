@@ -31,4 +31,15 @@ public class Throwing_Object : MonoBehaviour
         
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+
+
+
+    }
+
 }
