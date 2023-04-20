@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     //private GameObject _warrior, _valkyrie, _wizard, _elf;
     public EnemyScriptableObject enemySO;
-    protected GameObject closestTarget;
+    public GameObject closestTarget;
     public Vector3 targetPos;
     public bool attackingPlayer;
     protected List<TestMovement> _targets = new List<TestMovement>();
@@ -67,7 +67,14 @@ public class EnemyMovement : MonoBehaviour
                 if (!attackingPlayer)
                 {
                     attackingPlayer = true;
-                    //LobObject();
+
+                    if (!this.GetComponent<LobAttack>())
+                        this.gameObject.AddComponent<LobAttack>();
+
+                    ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget);
+                    
+                    
+
                     Debug.Log("Lobbing");
                 }
             }

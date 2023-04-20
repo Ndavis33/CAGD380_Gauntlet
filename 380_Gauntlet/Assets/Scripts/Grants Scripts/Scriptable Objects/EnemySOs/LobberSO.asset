@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   speed: 5
-  minAttackRange: 14
-  maxAttackRange: 20
+  minAttackRange: 16.5
+  maxAttackRange: 17.5
   isCoward: 1
   canBlink: 0
   isSuicidal: 0
