@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,70 +6,119 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-   [SerializeField]
-    private float speed = 5.0f;
-    [SerializeField]
-    private float rotateSpeed = 15.0f;
 
+    private float speed = 0f;
+    public PlayerSO BasePlayer;
+
+    public int playerHealth = 100; 
    
-    private Vector2 moveInput = Vector2.zero;
-
-    private bool throwWeapon = false;
-  
+    private Vector3 moveInput = Vector3.zero;
+    private Vector3 move = Vector3.zero;
+    //private bool throwWeapon = false;
+   // private Vector3 throwDistance = new Vector3(1, 0, 0);
     private CharacterController controller;
     private PlayerInput inputs;
-    public GameObject weapon;
+   // public GameObject weapon;
+    public GameObject ThrowingStick;
+    // public GameObject Camera; 
+
+    public bool ToggleInvisibility = false;
+    public bool hasKey;
+    public bool isMoving = true;
+    public bool isThrowing = false;
+
+  
+
+
+
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
-        weapon = transform.Find("Stick").gameObject;
-        weapon.SetActive(false);
-      
+        speed = BasePlayer.baseSpeed;
+        
+        // weapon = transform.Find("Stick").gameObject;
+        // weapon.SetActive(false);
+       
     }
 
     private void FixedUpdate()
     {
-     
-        Vector3 move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
-        controller.Move(move * speed * Time.deltaTime);
+      
+        if (isMoving)
+        {
+            move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
+            controller.Move(move * speed * Time.deltaTime);
+            if (move.magnitude > 0)
+            {
+                transform.rotation = Quaternion.LookRotation(move);
+            }
+        }
+       // Camera.transform.position = this.transform.position;     
     }
 
 
     public void Moving(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-      
+       // moveInput = context.ReadValue<Vector3>();
+        if (!isThrowing)
+        {
+            moveInput = context.ReadValue<Vector3>();
+        }
+        
     }
+
+
+    //Logic for proper player movement
+    
+  public void Stop(InputAction.CallbackContext _up)
+  {
+        moveInput = Vector2.zero;
+       
+    }
+        
+
 
     public void Throwing(InputAction.CallbackContext context)
     {
-        throwWeapon = context.ReadValue<bool>();
-        throwWeapon = context.action.triggered;
+        if (context.performed)
+        {
+            StartCoroutine(firingPause());
+            GameObject obj = Instantiate(ThrowingStick, this.transform.position, transform.rotation);
 
-        Debug.Log("Player Should Throw");
+        }
+        if (context.canceled)
+        {
+            
+            return;
+          
+        }
     }
 
     public void Melee(InputAction.CallbackContext context)
     {
-        StartCoroutine(MeleeSpeed());
-        Debug.Log("Player Should Melee");
+       // StartCoroutine(MeleeSpeed());
+       // Debug.Log("Player Should Melee");
     }
 
-    public void Rotate(InputAction.CallbackContext context)
+   
+    private IEnumerator Potion()
     {
-        float CurrentDirection = context.ReadValue<float>();
-        // transform.Rotate(Vector3.up * Time.deltaTime * rotateSpeed * CurrentDirection);
-        transform.Rotate(0f, CurrentDirection * rotateSpeed, 0f);
-
-        Debug.Log("Player Should Rotate");
+     
+        //Potion code...
+       yield return new WaitForSeconds(3);
+     
     }
 
-    private IEnumerator MeleeSpeed()
+    private IEnumerator firingPause()
     {
-      weapon.SetActive(true);
-       yield return new WaitForSeconds(0.25f);
-      weapon.SetActive(false);
+
+        isMoving = false;
+        yield return new WaitForSeconds(1f);
+        isMoving = true;
+        
     }
+
+   
 
 }

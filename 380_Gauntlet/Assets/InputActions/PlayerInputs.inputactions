@@ -6,15 +6,6 @@
             "id": "a190c062-efe5-440a-82c7-f80469d9936f",
             "actions": [
                 {
-                    "name": "Movement",
-                    "type": "PassThrough",
-                    "id": "638daaab-ebc5-4715-8dbf-de14467222e6",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Throw",
                     "type": "Button",
                     "id": "8d64a72a-2bb0-4466-903d-1a35bcb944e2",
@@ -24,22 +15,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotation",
+                    "name": "Movement",
                     "type": "Value",
-                    "id": "4a849a6a-2c2b-4d1a-bdc4-a5f702c38685",
-                    "expectedControlType": "Axis",
+                    "id": "3f2adf8b-418e-4083-b46a-5a500b7a0bcf",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Melee",
-                    "type": "Button",
-                    "id": "fcb5c1e7-42e3-4505-be13-f67ec3ef5223",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -67,8 +49,8 @@
                 },
                 {
                     "name": "Controller",
-                    "id": "70133bd5-2a1d-4a17-8584-b6bd18c5dbd8",
-                    "path": "2DVector",
+                    "id": "f8c51eb9-f051-4171-8e7d-8a186df73be2",
+                    "path": "3DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -77,191 +59,70 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "355e89e1-54da-400b-8c9f-59ae5220bd31",
+                    "name": "Up",
+                    "id": "41a340b6-897a-4e61-b40c-efe1145d8cd0",
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "36b92255-4f7e-4553-a35a-ed68d42218f6",
+                    "name": "Down",
+                    "id": "43b312f0-fefe-464d-9a0b-14abbc8cfdce",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "07687321-f2cc-4ec7-9282-b15035ce9350",
+                    "name": "Left",
+                    "id": "b3b87da1-8e0e-4ca5-828c-6ac3c68a1986",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "d362c2ef-095d-4434-80c2-8e4dd41148b6",
+                    "name": "Right",
+                    "id": "cca94b40-6beb-4af3-b4f8-f4b89403f970",
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "WASD",
-                    "id": "d85ff624-4485-4bdd-acb2-574390d59514",
-                    "path": "2DVector",
+                    "name": "Forward",
+                    "id": "3a5e6007-25a0-459c-b1c6-cdaa1d60c45b",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "5043f8d8-5569-4d40-b2ff-09f0fc9d8b4d",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "7391cadc-baea-41b9-a76f-a852a667e27c",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "246d2ae8-219f-40eb-82a0-40e727608607",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "3056108a-8922-4753-ad27-e6a05e42c160",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Rotate_KeyBoard",
-                    "id": "e50a7d10-95ed-4c74-aec9-1499f7963ef2",
-                    "path": "1DAxis",
+                    "name": "Backward",
+                    "id": "50d34e4c-3fc9-49e3-89a0-20c3c068f3b1",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotation",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "f43cf744-b194-4b96-aaf9-88e790723cac",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Rotation",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "0abb1cb5-3b83-40af-99cc-8dd6dbd523ee",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Rotate_Controller",
-                    "id": "155400be-cd7f-4e33-8c54-34939f03c0fb",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotation",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "1e7a865e-1ac7-4a32-b22c-9b45aa6ab704",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "4209208d-f942-4114-aa37-35b31c436437",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "3d278fce-a42b-4c5a-b4ae-12860d999c12",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c5509ff9-3722-44fe-9861-58dd5fbbf10e",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
