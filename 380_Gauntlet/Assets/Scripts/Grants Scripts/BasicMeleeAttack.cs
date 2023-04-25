@@ -5,6 +5,7 @@ using UnityEngine;
 public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
 {
     private EnemyScriptableObject _enemySO;
+    private PlayerMovement _player;
     private float _startSpeed;
 
     private void Awake()
@@ -14,6 +15,7 @@ public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
     }
     public void Attack(EnemyMovement attacker, GameObject target)
     {
+        _player = target.GetComponent<PlayerMovement>();
         StartCoroutine(MeleePlayer(target, attacker));
         //throw new System.NotImplementedException();
     }

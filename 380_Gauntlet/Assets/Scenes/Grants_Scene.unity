@@ -601,9 +601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce231125ea5f5c442878eaf5531a8521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 11400000, guid: 0af4bda3e40991144b14132726b87d6d, type: 2}
+  enemySO: {fileID: 11400000, guid: ec47f1ecb953c534a9a0c82ae4d65fc6, type: 2}
   closestTarget: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
+  startHealth: 0
   attackingPlayer: 0
 --- !u!1 &1562132721
 GameObject:

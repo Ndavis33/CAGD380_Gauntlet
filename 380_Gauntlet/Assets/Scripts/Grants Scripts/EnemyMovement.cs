@@ -7,14 +7,21 @@ public class EnemyMovement : MonoBehaviour
     //private GameObject _warrior, _valkyrie, _wizard, _elf;
     public EnemyScriptableObject enemySO;
     public GameObject closestTarget;
+    private PlayerMovement _player;
     public Vector3 targetPos;
+    public float startHealth;
     public bool attackingPlayer = false;
     private bool _still;
-    protected List<TestMovement> _targets = new List<TestMovement>();
+    protected List<PlayerMovement> _targets = new List<PlayerMovement>();
+
+    private void Awake()
+    {
+        startHealth = enemySO.health;
+    }
 
     private void Start()
     {
-        foreach (TestMovement target in GameObject.FindObjectsOfType<TestMovement>())
+        foreach (PlayerMovement target in GameObject.FindObjectsOfType<PlayerMovement>())
         {
             _targets.Add(target);
             Debug.Log("found target: " + target.name);
@@ -29,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         float minDistanceFromTarget = 420.69f;
-        foreach (TestMovement target in _targets)
+        foreach (PlayerMovement target in _targets)
         {
             if (Vector3.Distance(this.transform.position, target.transform.position) < minDistanceFromTarget)
             {
@@ -40,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             }               
         }
-        
+
         Debug.Log("Closest Target: " + closestTarget.name);
         targetPos = closestTarget.transform.position;
 
@@ -119,6 +126,15 @@ public class EnemyMovement : MonoBehaviour
             attackingPlayer = false;
         }
 
+    }
+
+    private void TakeDamage(int damage)
+    {
+        enemySO.health -= damage;
+        if(enemySO.health <= 0)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
 }

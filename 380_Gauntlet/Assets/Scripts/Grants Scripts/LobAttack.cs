@@ -15,6 +15,7 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
     public void Attack(EnemyMovement attacker, GameObject target)
     {
         attackTarget = target;
+        Debug.Log("lobbing player");
         StartCoroutine(Lob(attacker));
         //throw new System.NotImplementedException();
     }
@@ -24,17 +25,18 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
         //yield return new WaitForSeconds(1);
 
         GameObject projectile = ObjectPooler.Instance.GetPooledObject("Lobber Projectile");
-        Debug.Log(projectile.name);
+        //Debug.Log(projectile.name);
         //yield return new WaitForSeconds(_attackRate);
 
-        Debug.Log("attacking player");
-        if (projectile != null)
+        
+        if (projectile != null && attacker.attackingPlayer)
         {
             _projectileStartPos = attacker.transform.position;
             _projectileStartPos += _positionOffset;
             projectile.transform.position = _projectileStartPos;
             projectile.transform.localRotation = attacker.transform.rotation;
             projectile.SetActive(true);
+            Debug.Log("attacking player");
 
         }
 

@@ -7,6 +7,7 @@ public class EnemyScriptableObject : ScriptableObject
 {
     public int damage;
 
+    public float health;
     public float speed;
     public float minAttackRange;
     public float maxAttackRange;
