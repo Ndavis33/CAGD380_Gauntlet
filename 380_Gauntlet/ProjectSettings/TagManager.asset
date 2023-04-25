@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Stick
   layers:
   - Default
   - TransparentFX

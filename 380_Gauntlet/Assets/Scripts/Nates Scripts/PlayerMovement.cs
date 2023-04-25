@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float speed = 0f;
     public PlayerSO BasePlayer;
- 
+
+    public int playerHealth = 100; 
    
     private Vector3 moveInput = Vector3.zero;
     private Vector3 move = Vector3.zero;
@@ -27,14 +28,18 @@ public class PlayerMovement : MonoBehaviour
     public bool isThrowing = false;
 
   
+
+
+
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
         speed = BasePlayer.baseSpeed;
+        
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
-
+       
     }
 
     private void FixedUpdate()
@@ -79,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed)
         {
             StartCoroutine(firingPause());
-            Instantiate(ThrowingStick, this.transform.position, transform.rotation);
+            GameObject obj = Instantiate(ThrowingStick, this.transform.position, transform.rotation);
+
         }
         if (context.canceled)
         {
@@ -112,5 +118,7 @@ public class PlayerMovement : MonoBehaviour
         isMoving = true;
         
     }
+
+   
 
 }

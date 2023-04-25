@@ -228,11 +228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b2b93c3c2001842b532d5d70e815d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  rotateSpeed: 15
+  BasePlayer: {fileID: 11400000, guid: 9dcb27adcf265554288fd71243047975, type: 2}
   ThrowingStick: {fileID: 8964541579215143868, guid: 89c4f778a25599e4cbe55fcdca2eeeaa, type: 3}
   ToggleInvisibility: 0
   hasKey: 0
+  isMoving: 1
+  isThrowing: 0
 --- !u!114 &1342457566626497783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,13 +276,21 @@ MonoBehaviour:
     m_ActionId: 8d64a72a-2bb0-4466-903d-1a35bcb944e2
     m_ActionName: Player/Throw
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1342457566626497782}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Moving
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3f2adf8b-418e-4083-b46a-5a500b7a0bcf
     m_ActionName: Player/Movement[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fab5c4d6-e68d-4ad7-b541-c5177340e5e2
-    m_ActionName: Player/Rotation[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player

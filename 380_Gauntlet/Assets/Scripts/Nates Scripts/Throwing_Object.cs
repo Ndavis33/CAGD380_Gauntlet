@@ -7,7 +7,8 @@ public class Throwing_Object : MonoBehaviour
     public float rotate = 100;
     private int speed = 10;
     public GameObject player;
-
+    public int Damage;
+    private PlayerMovement _player;
 
     private void Start()
     {
@@ -38,8 +39,7 @@ public class Throwing_Object : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-
-
+       
     }
 
 }
