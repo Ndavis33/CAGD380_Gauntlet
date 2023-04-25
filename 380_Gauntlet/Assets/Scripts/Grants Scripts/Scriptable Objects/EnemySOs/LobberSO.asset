@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783b68b8eb82be14a9d4b3e0bd7f14ef, type: 3}
-  m_Name: BasePlayerSO
+  m_Script: {fileID: 11500000, guid: 2d0143e863cd4fe43b688da57e7fe5eb, type: 3}
+  m_Name: LobberSO
   m_EditorClassIdentifier: 
-  warriorSO: {fileID: 0}
-  localSpeed: 5
-  localDefense: 10
-  localPhysicalDamage: 5
-  localMagicDamage: 5
+  damage: 25
+  health: 0
+  speed: 5
+  minAttackRange: 10
+  maxAttackRange: 17.5
+  isCoward: 1
+  canBlink: 0
+  isSuicidal: 0

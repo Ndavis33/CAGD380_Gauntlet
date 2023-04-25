@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
-  - Stick
+  - Lobber Projectile
+  - Boundary
   layers:
   - Default
   - TransparentFX
