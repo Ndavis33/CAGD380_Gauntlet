@@ -10,11 +10,11 @@ public class Projectile : MonoBehaviour
     private Rigidbody _rigidbody;
 
     private Vector3 _startPos, _endPos;
-    private Vector3 targetPos;
+    private Vector3 _targetDirection;
     private Vector3 _jumpForce;
+    //private Vector3 _positionOffset = new Vector3(1.05f, 0.5f);
 
-    private float _positionOffset = 1f;
-    private float _speed = 9;
+    private float _speed = 7f;
     private float _timeStart;
     private float _distTraveled;
 
@@ -26,19 +26,25 @@ public class Projectile : MonoBehaviour
         _thrower = gameObject.GetComponentInParent<LobAttack>();
 
         _rigidbody = this.GetComponent<Rigidbody>();
-        _jumpForce = new Vector3(0, 1, -1) * _speed;
+
+        _targetDirection = _enemy.targetPos - this.transform.position;
+        _jumpForce = (Vector3.back + Vector3.up) * _speed;
 
     }
 
+
     private void OnEnable()
     {
-        _startPos = this.transform.position;
+       //_startPos = _enemy.transform.position;
+       //_startPos += _positionOffset;
 
-        _timeStart = Time.time;
+        //this.transform.position = _startPos;
+
+        //_timeStart = Time.time;
 
         //_projecting = true;
 
-        _rigidbody.AddForce(_jumpForce, ForceMode.Impulse);
+        _rigidbody.AddForce(_jumpForce, ForceMode.VelocityChange);
     }
 
 
@@ -57,16 +63,14 @@ public class Projectile : MonoBehaviour
             _distTraveled = Vector3.Distance(_startPos, _endPos);
             Debug.Log("Distance traveled: " + _distTraveled);
             ResetPosition();
-
-
         }
     }
 
     private void ResetPosition()
     {   
-        this.transform.position = _startPos;
         this.gameObject.SetActive(false);
-        _enemy.attackingPlayer = false;
-        
+        this.transform.position = _startPos;
+        _rigidbody.velocity = Vector3.zero;
+        //_enemy.attackingPlayer = false;        
     }
 }

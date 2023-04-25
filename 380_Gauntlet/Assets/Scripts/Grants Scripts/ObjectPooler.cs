@@ -81,5 +81,44 @@ public class ObjectPooler : MonoBehaviour
 
         return null;
     }
+
+    //for routines using this method in a loop
+    public GameObject GetPooledObject(string tag, int amount)
+    {
+        if(amount > pooledObjects.Count)
+        {
+            Debug.Log("Too many pooled objects to get");
+            return null;
+        }
+
+        //use a for loop to iterate through the list of pooled objects
+        for (int i = 0; i < amount; i++)
+        {
+            //check to see if the item in our list is currently active or not (this is how we'll know if were using it or not)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
+            {
+                //that means we want to return the first non active GameObject
+                return pooledObjects[i];
+            }
+        }
+
+        foreach (ObjectPoolItem item in itemsToPool)
+        {
+            if (item.objectToPool.tag == tag)
+            {
+                if (item.shouldExpand)
+                {
+                    GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                    obj.SetActive(false);
+                    pooledObjects.Add(obj);
+                    return obj;
+                }
+
+            }
+        }
+        //we don't have one so if should expand is true, make a new one and return that
+
+        return null;
+    }
 }
 

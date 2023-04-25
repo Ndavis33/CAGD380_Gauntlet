@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour
     public EnemyScriptableObject enemySO;
     public GameObject closestTarget;
     public Vector3 targetPos;
-    public bool attackingPlayer;
+    public bool attackingPlayer = false;
+    private bool _still;
     protected List<TestMovement> _targets = new List<TestMovement>();
 
     private void Start()
@@ -44,25 +45,27 @@ public class EnemyMovement : MonoBehaviour
         targetPos = closestTarget.transform.position;
 
         /*
-         * figure out why this isn't working properly before implementing
         Vector3 targetDirection = targetPos - this.transform.position;
         Vector3 newDirection = Vector3.RotateTowards(this.transform.forward, targetDirection, enemySO.speed * Time.deltaTime, 0.0f);
         this.transform.rotation = Quaternion.LookRotation(newDirection);
         */
+        
 
         if (enemySO.isCoward)
         {
             if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
             {
+                _still = false;
                 Debug.Log("Following");
-                this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);               
+                this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
             }
             else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
             {
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
+                _still = false;
+                this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
                 Debug.Log("Running");
             }
-            else
+            else if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange && Vector3.Distance(this.transform.position, targetPos) < enemySO.maxAttackRange)
             {
                 if (!attackingPlayer)
                 {
@@ -72,12 +75,14 @@ public class EnemyMovement : MonoBehaviour
                         this.gameObject.AddComponent<LobAttack>();
 
                     ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget);
-                    
-                    
+
+
 
                     Debug.Log("Lobbing");
                 }
             }
+            else
+                Debug.Log("bruh");
         }
         else
             this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);               

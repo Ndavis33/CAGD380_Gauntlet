@@ -5,6 +5,13 @@ using UnityEngine;
 public class LobAttack : MonoBehaviour, IAttackBehavior
 {
     public GameObject attackTarget;
+
+    private Vector3 _positionOffset = new Vector3(-1.05f, 0.5f);
+    private Vector3 _projectileStartPos;
+
+    [SerializeField]
+    private float _attackRate = 3f;
+  
     public void Attack(EnemyMovement attacker, GameObject target)
     {
         attackTarget = target;
@@ -17,19 +24,21 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
         //yield return new WaitForSeconds(1);
 
         GameObject projectile = ObjectPooler.Instance.GetPooledObject("Lobber Projectile");
-        while (attacker.attackingPlayer)
-        {
-            Debug.Log("attacking player");
-            if (projectile != null)
-            {
-                projectile.transform.position = attacker.transform.position;
-                projectile.transform.rotation = attacker.transform.rotation;
-                projectile.SetActive(true);
-            }
-            yield return new WaitForSeconds(3);
-        }
-        
+        Debug.Log(projectile.name);
+        //yield return new WaitForSeconds(_attackRate);
 
+        Debug.Log("attacking player");
+        if (projectile != null)
+        {
+            _projectileStartPos = attacker.transform.position;
+            _projectileStartPos += _positionOffset;
+            projectile.transform.position = _projectileStartPos;
+            projectile.transform.localRotation = attacker.transform.rotation;
+            projectile.SetActive(true);
+
+        }
+
+        yield return new WaitForSeconds(_attackRate);
         attacker.attackingPlayer = false;
     }
 }
