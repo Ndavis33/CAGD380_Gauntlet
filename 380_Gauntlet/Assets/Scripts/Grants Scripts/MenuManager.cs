@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public Material redMat, blueMat, yellowMat, greenMat; 
     public GameObject avatar1, avatar2, avatar3, avatar4;
+    public GameObject Warrior, Elf, Valkyrie, Wizard;
     public Text avatar1Text, avatar2Text, avatar3Text, avatar4Text;
     public Button p1Forward, p1Back, p2Forward, p2Back, p3Forward, p3Back, p4Forward, p4Back, playButton;
 
@@ -23,6 +24,16 @@ public class MenuManager : MonoBehaviour
         _yellow = yellowMat.color;
         _green = greenMat.color;
 
+        avatar1 = Warrior;
+        avatar2 = Valkyrie;
+        avatar3 = Wizard;
+        avatar4 = Elf;
+
+        Warrior.gameObject.SetActive(false);
+        Valkyrie.gameObject.SetActive(false);
+        Elf.gameObject.SetActive(false);
+        Wizard.gameObject.SetActive(false);
+
         playButton.gameObject.SetActive(false);
     }
 
@@ -38,10 +49,12 @@ public class MenuManager : MonoBehaviour
 
     public void p1Lock()
     {
+        Warrior.gameObject.SetActive(true);
         if (!p1Locked)
         {
             if (!CheckContested(avatar1Text))
             {
+
                 p1Forward.gameObject.SetActive(false);
                 p1Back.gameObject.SetActive(false);
                 p1Locked = true;
@@ -58,6 +71,7 @@ public class MenuManager : MonoBehaviour
 
     public void p2Lock()
     {
+        Valkyrie.gameObject.SetActive(true);
         if (!p2Locked)
         {
             if (!CheckContested(avatar2Text))
@@ -78,6 +92,7 @@ public class MenuManager : MonoBehaviour
 
     public void p3Lock()
     {
+        Wizard.gameObject.SetActive(true);
         if (!p3Locked)
         {
             if (!CheckContested(avatar3Text))
@@ -98,6 +113,7 @@ public class MenuManager : MonoBehaviour
 
     public void p4Lock()
     {
+        Elf.gameObject.SetActive(true);
         if (!p4Locked)
         {
             if (!CheckContested(avatar4Text))
