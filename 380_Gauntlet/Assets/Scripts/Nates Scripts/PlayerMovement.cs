@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float speed = 0f;
     public PlayerSO BasePlayer;
-
-    public int playerHealth = 100; 
+   
+    public float playerHealth = 100; 
    
     private Vector3 moveInput = Vector3.zero;
     private Vector3 move = Vector3.zero;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
         speed = BasePlayer.baseSpeed;
-        
+       
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
        
@@ -119,6 +119,14 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-   
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+          
+        }
+    }
+
 
 }
