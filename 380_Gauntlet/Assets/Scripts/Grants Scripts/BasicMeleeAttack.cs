@@ -28,13 +28,13 @@ public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
        
         if (enemy.attackingPlayer)
         {
-            while (playerHP > 0)
+            while (_player.playerHealth > 0)
             {
                 Debug.Log("Attacking player");
-                playerHP -= _enemySO.damage;
+                _player.playerHealth -= _enemySO.damage;
                 Debug.Log("Test Player at " + playerHP + "health");
 
-                if (playerHP <= 0)
+                if (_player.playerHealth <= 0)
                 {
                     player.gameObject.SetActive(false);
                     Debug.Log("Target eliminated");

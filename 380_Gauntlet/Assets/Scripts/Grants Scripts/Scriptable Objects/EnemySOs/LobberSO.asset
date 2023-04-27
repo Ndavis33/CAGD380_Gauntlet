@@ -15,8 +15,8 @@ MonoBehaviour:
   damage: 25
   health: 0
   speed: 5
-  minAttackRange: 10
-  maxAttackRange: 17.5
+  minAttackRange: 5
+  maxAttackRange: 8
   isCoward: 1
   canBlink: 0
   isSuicidal: 0

@@ -11,9 +11,10 @@ public class Projectile : MonoBehaviour
     private Vector3 _startPos, _endPos;
     private Vector3 _targetDirection;
     private Vector3 _jumpForce;
+    private Vector3 verticalForce = new Vector3(0, 9);
     //private Vector3 _positionOffset = new Vector3(1.05f, 0.5f);
 
-    private float _speed = 7f;
+    private float _speed = .8f;
     private float _timeStart;
     private float _distTraveled;
 
@@ -25,15 +26,14 @@ public class Projectile : MonoBehaviour
 
         _rigidbody = this.GetComponent<Rigidbody>();
         
-        _targetDirection = enemy.targetPos - this.transform.position;
-        _jumpForce = (_targetDirection + Vector3.up) * _speed;
+        
 
     }
 
 
     private void OnEnable()
     {
-        
+
         //_startPos = _enemy.transform.position;
         //_startPos += _positionOffset;
 
@@ -41,12 +41,14 @@ public class Projectile : MonoBehaviour
 
         //_timeStart = Time.time;
 
-        //_projecting = true;
+        _targetDirection = enemy.targetPos - this.transform.position;
+        _jumpForce = (_targetDirection + verticalForce) * _speed;
+
         if (enemy == null)
             Debug.Log("enemy null");
 
-        Debug.Log("direction:  " + _targetDirection);
-        Debug.Log("Shooting toward " + _jumpForce);
+        //Debug.Log("direction:  " + _targetDirection);
+        //Debug.Log("Shooting toward " + enemy.targetPos + "from: " + this.transform.position + "at a speed of: " + _speed);
 
         _rigidbody.AddForce(_jumpForce, ForceMode.VelocityChange);
     }
