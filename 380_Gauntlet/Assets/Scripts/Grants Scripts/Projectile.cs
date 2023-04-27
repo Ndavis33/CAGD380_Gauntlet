@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private EnemyMovement _enemy;
-    private LobAttack _thrower;
+    public EnemyMovement enemy;
 
     private Rigidbody _rigidbody;
 
@@ -22,13 +21,13 @@ public class Projectile : MonoBehaviour
 
     private void Awake()
     {
-        _enemy = gameObject.GetComponentInParent<EnemyMovement>();
-        _thrower = gameObject.GetComponentInParent<LobAttack>();
+        //enemy = gameObject.GetComponentInParent<EnemyMovement>();
 
         _rigidbody = this.GetComponent<Rigidbody>();
-
-        _targetDirection = _enemy.targetPos - this.transform.position;
-        _jumpForce = (Vector3.back + Vector3.up) * _speed;
+        if (enemy == null)
+            Debug.Log("enemy null");
+        _targetDirection = enemy.targetPos - this.transform.position;
+        _jumpForce = (_targetDirection + Vector3.up) * _speed;
 
     }
 

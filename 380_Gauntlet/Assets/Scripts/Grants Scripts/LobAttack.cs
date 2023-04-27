@@ -36,6 +36,7 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
             projectile.transform.position = _projectileStartPos;
             projectile.transform.localRotation = attacker.transform.rotation;
             projectile.SetActive(true);
+            projectile.GetComponent<Projectile>().enemy = this.gameObject.GetComponent<EnemyMovement>();
             Debug.Log("attacking player");
 
         }
