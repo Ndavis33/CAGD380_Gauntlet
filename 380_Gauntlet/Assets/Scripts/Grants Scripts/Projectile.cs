@@ -24,8 +24,7 @@ public class Projectile : MonoBehaviour
         //enemy = gameObject.GetComponentInParent<EnemyMovement>();
 
         _rigidbody = this.GetComponent<Rigidbody>();
-        if (enemy == null)
-            Debug.Log("enemy null");
+        
         _targetDirection = enemy.targetPos - this.transform.position;
         _jumpForce = (_targetDirection + Vector3.up) * _speed;
 
@@ -34,14 +33,20 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-       //_startPos = _enemy.transform.position;
-       //_startPos += _positionOffset;
+        
+        //_startPos = _enemy.transform.position;
+        //_startPos += _positionOffset;
 
         //this.transform.position = _startPos;
 
         //_timeStart = Time.time;
 
         //_projecting = true;
+        if (enemy == null)
+            Debug.Log("enemy null");
+
+        Debug.Log("direction:  " + _targetDirection);
+        Debug.Log("Shooting toward " + _jumpForce);
 
         _rigidbody.AddForce(_jumpForce, ForceMode.VelocityChange);
     }
