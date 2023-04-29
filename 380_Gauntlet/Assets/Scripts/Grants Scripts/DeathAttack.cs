@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class DeathAttack : MonoBehaviour, IAttackBehavior
 {
-    public void Attack(EnemyMovement attacker, GameObject target)
+    //private EnemyScriptableObject _enemySO;
+    private float _maxHealthSap = 200f;
+
+    private int _healthSapped;
+
+    private bool _sapping = false;
+
+    public void Attack(EnemyMovement attacker, PlayerMovement target)
     {
         //throw new System.NotImplementedException();
-        StartCoroutine(SapHealth());
+        StartCoroutine(SapHealth(attacker, target));
     }
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        
+        _healthSapped = 0;
     }
 
     // Update is called once per frame
@@ -22,9 +29,34 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
         
     }
 
-    private IEnumerator SapHealth()
+    private IEnumerator SapHealth(EnemyMovement attacker, PlayerMovement target)
     {
-        //TODO
-        return null;
+        while (_healthSapped < _maxHealthSap)
+        {
+            if (_sapping)
+            {
+                target.playerHealth -= attacker.enemySO.damage;
+                _healthSapped += attacker.enemySO.damage;
+                Debug.Log("Target Health: " + target.playerHealth);
+
+                if(_healthSapped >= _maxHealthSap)
+                {
+                    this.gameObject.SetActive(false);
+                    break;
+                }
+            }
+            else
+                break;
+
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Player"))
+        {
+            _sapping = true;
+        }
     }
 }

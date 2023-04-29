@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEnemyScriptableObject", menuName = "Scriptable Objects/ EnemySO")]
 public class EnemyScriptableObject : ScriptableObject
 {
+    //public IAttackBehavior strategyToUse;
     public int damage;
 
     public float health;

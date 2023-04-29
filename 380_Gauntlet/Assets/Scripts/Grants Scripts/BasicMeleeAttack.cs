@@ -13,18 +13,17 @@ public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
         _enemySO = this.GetComponent<EnemyMovement>().enemySO;
         _startSpeed = _enemySO.speed;
     }
-    public void Attack(EnemyMovement attacker, GameObject target)
+    public void Attack(EnemyMovement attacker, PlayerMovement target)
     {
         _player = target.GetComponent<PlayerMovement>();
         StartCoroutine(MeleePlayer(target, attacker));
         //throw new System.NotImplementedException();
     }
 
-    private IEnumerator MeleePlayer(GameObject player, EnemyMovement enemy)
+    private IEnumerator MeleePlayer(PlayerMovement player, EnemyMovement enemy)
     {
         //example player stats for testing
         _enemySO.damage = 25;
-        float playerHP = 100;
        
         if (enemy.attackingPlayer)
         {
@@ -32,7 +31,6 @@ public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
             {
                 Debug.Log("Attacking player");
                 _player.playerHealth -= _enemySO.damage;
-                Debug.Log("Test Player at " + playerHP + "health");
 
                 if (_player.playerHealth <= 0)
                 {
