@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class MenuManager : MonoBehaviour
     public GameObject Warrior, Elf, Valkyrie, Wizard;
     public Text avatar1Text, avatar2Text, avatar3Text, avatar4Text;
     public Button p1Forward, p1Back, p2Forward, p2Back, p3Forward, p3Back, p4Forward, p4Back, playButton;
+
+    public GameObject player1;
+    public GameObject player2;
+    public GameObject player3;
+    public GameObject player4;
+    
+   public int ControllerNumber;
 
     private Color _red;
     private Color _blue;
@@ -24,22 +32,48 @@ public class MenuManager : MonoBehaviour
         _yellow = yellowMat.color;
         _green = greenMat.color;
 
-        avatar1 = Warrior;
-        avatar2 = Valkyrie;
-        avatar3 = Wizard;
-        avatar4 = Elf;
+         // avatar1 = Warrior;
+        //  avatar2 = Valkyrie;
+       //   avatar3 = Wizard;
+      //   avatar4 = Elf;
 
-        Warrior.gameObject.SetActive(false);
-        Valkyrie.gameObject.SetActive(false);
-        Elf.gameObject.SetActive(false);
-        Wizard.gameObject.SetActive(false);
-
-        playButton.gameObject.SetActive(false);
+        //    Warrior.gameObject.SetActive(false);
+        //   Valkyrie.gameObject.SetActive(false);
+        //   Elf.gameObject.SetActive(false);
+        //   Wizard.gameObject.SetActive(false);
+       player1.gameObject.SetActive(false);
+       player2.gameObject.SetActive(false);
+       player3.gameObject.SetActive(false);
+       player4.gameObject.SetActive(false);
+       playButton.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if(p1Locked && p2Locked && p3Locked && p4Locked)
+        ControllerNumber = Gamepad.all.Count;
+
+        
+        if (ControllerNumber < 1)
+        {
+            player1.gameObject.SetActive(true);
+        }
+        if (ControllerNumber <2)
+        {
+            player2.gameObject.SetActive(true);
+        }
+        if (ControllerNumber < 3)
+        {
+            player3.gameObject.SetActive(true);
+        }
+        if (ControllerNumber < 4)
+        {
+            player4.gameObject.SetActive(true);
+        }
+        
+
+
+
+        if (p1Locked && p2Locked && p3Locked && p4Locked)
         {
             playButton.gameObject.SetActive(true);
         }
@@ -47,9 +81,46 @@ public class MenuManager : MonoBehaviour
             playButton.gameObject.SetActive(false);
     }
 
+
+
+    public void DevicesConnected(InputDevice device)
+    {
+       
+        if ( ControllerNumber == 1)
+        {
+            player1.gameObject.SetActive(true);
+        }
+        if (ControllerNumber == 2)
+        {
+            player2.gameObject.SetActive(true);
+        }
+        if (ControllerNumber == 3)
+        {
+            player3.gameObject.SetActive(true);
+        }
+        if (ControllerNumber == 4)
+        {
+            player4.gameObject.SetActive(true);
+        }
+    }
+
+
+    public void PressXtoStart(InputAction.CallbackContext context)
+    {
+        // turn off press x button and turn on arrows for player selection
+
+    }
+
+
+
+
+
+    /// <summary>
+    /// Grants Code
+    /// </summary>
     public void p1Lock()
     {
-        Warrior.gameObject.SetActive(true);
+       // Warrior.gameObject.SetActive(true);
         if (!p1Locked)
         {
             if (!CheckContested(avatar1Text))
@@ -71,7 +142,7 @@ public class MenuManager : MonoBehaviour
 
     public void p2Lock()
     {
-        Valkyrie.gameObject.SetActive(true);
+       // Valkyrie.gameObject.SetActive(true);
         if (!p2Locked)
         {
             if (!CheckContested(avatar2Text))
@@ -92,7 +163,7 @@ public class MenuManager : MonoBehaviour
 
     public void p3Lock()
     {
-        Wizard.gameObject.SetActive(true);
+       // Wizard.gameObject.SetActive(true);
         if (!p3Locked)
         {
             if (!CheckContested(avatar3Text))
@@ -113,7 +184,7 @@ public class MenuManager : MonoBehaviour
 
     public void p4Lock()
     {
-        Elf.gameObject.SetActive(true);
+       //  Elf.gameObject.SetActive(true);
         if (!p4Locked)
         {
             if (!CheckContested(avatar4Text))
@@ -201,6 +272,7 @@ public class MenuManager : MonoBehaviour
         avatarColor = NextMat(avatar1);
         avatar1.GetComponent<Renderer>().material.color = avatarColor;
         avatar1Text.text = GetPlayerType(avatarColor);
+
     }
 
     public void Player1Backward()

@@ -44,6 +44,24 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PressXtoJoin"",
+                    ""type"": ""Button"",
+                    ""id"": ""2fd53af0-3412-4c8c-90e7-75ba7eaf3d29"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CharacterSelect"",
+                    ""type"": ""Button"",
+                    ""id"": ""62bfede1-6e4f-46c9-aa29-b1a45ac25891"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -145,6 +163,61 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06a9b376-9856-4fa8-bcce-a7798bcae8da"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressXtoJoin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4930f93b-8dde-4c4b-bbd3-3e02736d6c28"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CharacterSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ca4a4ee-0617-44cd-a473-821b7caac42f"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CharacterSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99aca7b5-a4ac-4c84-8262-893ef7c5d0d7"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CharacterSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48464e13-9362-4b21-b9eb-e23cb69101a7"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CharacterSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -178,6 +251,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_PressXtoJoin = m_Player.FindAction("PressXtoJoin", throwIfNotFound: true);
+        m_Player_CharacterSelect = m_Player.FindAction("CharacterSelect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -239,12 +314,16 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_PressXtoJoin;
+    private readonly InputAction m_Player_CharacterSelect;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
         public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @PressXtoJoin => m_Wrapper.m_Player_PressXtoJoin;
+        public InputAction @CharacterSelect => m_Wrapper.m_Player_CharacterSelect;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -260,6 +339,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @PressXtoJoin.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPressXtoJoin;
+                @PressXtoJoin.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPressXtoJoin;
+                @PressXtoJoin.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPressXtoJoin;
+                @CharacterSelect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCharacterSelect;
+                @CharacterSelect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCharacterSelect;
+                @CharacterSelect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCharacterSelect;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -270,6 +355,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @PressXtoJoin.started += instance.OnPressXtoJoin;
+                @PressXtoJoin.performed += instance.OnPressXtoJoin;
+                @PressXtoJoin.canceled += instance.OnPressXtoJoin;
+                @CharacterSelect.started += instance.OnCharacterSelect;
+                @CharacterSelect.performed += instance.OnCharacterSelect;
+                @CharacterSelect.canceled += instance.OnCharacterSelect;
             }
         }
     }
@@ -296,5 +387,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     {
         void OnThrow(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnPressXtoJoin(InputAction.CallbackContext context);
+        void OnCharacterSelect(InputAction.CallbackContext context);
     }
 }
