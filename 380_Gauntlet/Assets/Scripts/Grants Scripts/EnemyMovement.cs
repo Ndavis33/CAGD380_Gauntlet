@@ -105,6 +105,7 @@ public class EnemyMovement : MonoBehaviour
                        
     }
 
+    //Nate needs to add a rigidbody to the player before continuing with Death
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Player"))
