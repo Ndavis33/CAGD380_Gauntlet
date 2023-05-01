@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: bdfe0a92ada38fa45b9379b802f7c26e, type: 2}
     - target: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_Name
-      value: Warrior
+      value: Warrior Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_TagString
