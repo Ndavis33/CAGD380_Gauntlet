@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         startHealth = enemySO.health;
+        this.GetComponent<Renderer>().material.color = enemySO.enemyColor;
     }
 
     private void Start()
@@ -65,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
             */
 
 
-            if (enemySO.isCoward)
+            if (enemySO.enemyType == EnemyType.Lobber)
             {
                 if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
                 {
@@ -110,22 +111,48 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Attacking Player");
+            attackingPlayer = true;
 
-            if (enemySO.isSuicidal)
+            switch (enemySO.enemyType)
+            {
+                case EnemyType.Death:
+                    if (!this.GetComponent<DeathAttack>())
+                        this.gameObject.AddComponent<DeathAttack>();
+
+                    ApplyStrategy(this.GetComponent<DeathAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
+
+                    break;
+                case EnemyType.Demon:
+                    break;
+                case EnemyType.Ghost:
+                    break;
+                case EnemyType.Grunt:
+                    if (!this.GetComponent<BasicMeleeAttack>())
+                        this.gameObject.AddComponent<BasicMeleeAttack>();
+
+                    ApplyStrategy(this.GetComponent<BasicMeleeAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
+                    break;
+                case EnemyType.Lobber:
+                    if (!this.GetComponent<LobAttack>())
+                        this.gameObject.AddComponent<LobAttack>();
+
+                    ApplyStrategy(this.GetComponent<LobAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
+                    break;
+                case EnemyType.Sorcerer:
+                    break;
+                case EnemyType.Thief:
+                    break;
+                default:
+                    break;
+            }
+
+            if (enemySO.enemyType == EnemyType.Ghost)
             {
                 //get player's health and decrease it by enemySO.damage
                 this.gameObject.SetActive(false);
             }
-            else
-            {
-                attackingPlayer = true;
-
-                if (!this.GetComponent<DeathAttack>())
-                    this.gameObject.AddComponent<DeathAttack>();
-
-                ApplyStrategy(this.GetComponent<DeathAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
-
-            }                     
+                    
         }
 
     }

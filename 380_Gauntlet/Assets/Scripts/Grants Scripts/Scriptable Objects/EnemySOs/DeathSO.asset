@@ -17,6 +17,5 @@ MonoBehaviour:
   speed: 5
   minAttackRange: 0
   maxAttackRange: 0
-  isCoward: 0
-  canBlink: 0
-  isSuicidal: 0
+  enemyColor: {r: 0, g: 0, b: 0, a: 0}
+  enemyType: 0

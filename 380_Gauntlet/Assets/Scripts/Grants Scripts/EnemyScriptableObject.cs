@@ -13,10 +13,7 @@ public class EnemyScriptableObject : ScriptableObject
     public float minAttackRange;
     public float maxAttackRange;
 
-    [Tooltip("Check this to make enemy stop when in range of enemy and run to range if not")]
-    public bool isCoward;
-    [Tooltip("Check this to make the enemy repeatedly become invisible and invulnerable")]
-    public bool canBlink;
-    [Tooltip("Checking this makes the enemy disable on collision")]
-    public bool isSuicidal;
+    public Color enemyColor;
+
+    public EnemyType enemyType;
 }

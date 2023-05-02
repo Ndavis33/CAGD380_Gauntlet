@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: BaseEnemySO
   m_EditorClassIdentifier: 
   damage: 5
-  health: 0
+  health: 20
   speed: 5
   minAttackRange: 0
   maxAttackRange: 0
-  isCoward: 0
-  canBlink: 0
-  isSuicidal: 0
+  enemyColor: {r: 0.20096782, g: 0.4056604, b: 0, a: 0}
+  enemyType: 3

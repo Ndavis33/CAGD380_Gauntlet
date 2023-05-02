@@ -24,7 +24,6 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
     {
         _healthSapped = 0;
         _startSpeed = this.GetComponent<EnemyMovement>().enemySO.speed;
-        _speed = this.GetComponent<EnemyMovement>().enemySO.speed;
     }
 
     private void OnDisable()
@@ -34,11 +33,11 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
 
     private IEnumerator SapHealth(EnemyMovement attacker, PlayerMovement target)
     {
-        while (_healthSapped < _maxHealthSap && attacker.attackingPlayer)
+        while (_healthSapped < _maxHealthSap)
         {
-            if (_sapping)
+            if (attacker.attackingPlayer)
             {
-                _speed = 0;
+                attacker.enemySO.speed = 0;
                 target.playerHealth -= attacker.enemySO.damage;
                 _healthSapped += attacker.enemySO.damage;
                 Debug.Log("Target Health: " + target.playerHealth);
@@ -55,28 +54,7 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
                 break;
 
             yield return new WaitForSeconds(0.25f);
-            if (!attacker.attackingPlayer)
-            {
-                _speed = _startSpeed;
-                break;
-            }
             
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            _sapping = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            _sapping = false;
         }
     }
 }
