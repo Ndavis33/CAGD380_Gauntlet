@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 1342457566626497783}
   - component: {fileID: 1342457566626497784}
   - component: {fileID: 1342457566626497780}
+  - component: {fileID: -3774427985139238489}
   m_Layer: 0
   m_Name: Player_Test
   m_TagString: Untagged
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasePlayer: {fileID: 11400000, guid: 9dcb27adcf265554288fd71243047975, type: 2}
+  playerHealth: 100
   ThrowingStick: {fileID: 8964541579215143868, guid: 89c4f778a25599e4cbe55fcdca2eeeaa, type: 3}
   ToggleInvisibility: 0
   hasKey: 0
@@ -291,6 +293,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3f2adf8b-418e-4083-b46a-5a500b7a0bcf
     m_ActionName: Player/Movement[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2fd53af0-3412-4c8c-90e7-75ba7eaf3d29
+    m_ActionName: Player/PressXtoJoin[/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62bfede1-6e4f-46c9-aa29-b1a45ac25891
+    m_ActionName: Player/CharacterSelect[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID1/leftStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID1/leftStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
@@ -328,3 +338,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-3774427985139238489
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342457566626497785}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
