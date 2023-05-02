@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject Warrior,Valkyrie,Elf,Wizard;
 
     public int PlayerHealth;
 
     private void Awake()
     {
-        PlayerHealth = 100;
+       
+
+       
     }
 
 

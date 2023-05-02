@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa6833524c64f148a79f7a166900187, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
-  baseSpeed: 10
+  baseSpeed: 7
   Damage: 0
   MagicDamage: 0
   Defense: 0

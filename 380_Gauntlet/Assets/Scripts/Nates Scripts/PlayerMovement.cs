@@ -120,13 +120,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-          
-        }
-    }
+    
 
 
 }
