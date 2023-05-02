@@ -24,7 +24,13 @@ public class MenuManager : MonoBehaviour
         _green = greenMat.color;
 
         playButton.gameObject.SetActive(false);
-    }
+
+        avatar1Text.text = null;
+        avatar2Text.text = null;
+        avatar3Text.text = null;
+        avatar4Text.text = null;
+
+    } 
 
     private void Update()
     {
