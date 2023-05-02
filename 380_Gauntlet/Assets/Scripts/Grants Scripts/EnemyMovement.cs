@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void ApplyStrategy(IAttackBehavior strategy, GameObject target)
+    public void ApplyStrategy(IAttackBehavior strategy, PlayerMovement target)
     {
         strategy.Attack(this, target);
     }
@@ -88,7 +88,7 @@ public class EnemyMovement : MonoBehaviour
                         if (!this.GetComponent<LobAttack>())
                             this.gameObject.AddComponent<LobAttack>();
 
-                        ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget);
+                        ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget.GetComponent<PlayerMovement>());
 
 
 
@@ -96,7 +96,7 @@ public class EnemyMovement : MonoBehaviour
                     }
                 }
                 else
-                    Debug.Log("bruh");
+                    Debug.Log("Vector3.Distance calculation error");
             }
             else
                 this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
@@ -105,6 +105,7 @@ public class EnemyMovement : MonoBehaviour
                        
     }
 
+    //Nate needs to add a rigidbody to the player before continuing with Death
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Player"))
@@ -119,10 +120,10 @@ public class EnemyMovement : MonoBehaviour
             {
                 attackingPlayer = true;
 
-                if (!this.GetComponent<BasicMeleeAttack>())
-                    this.gameObject.AddComponent<BasicMeleeAttack>();
+                if (!this.GetComponent<DeathAttack>())
+                    this.gameObject.AddComponent<DeathAttack>();
 
-                ApplyStrategy(this.GetComponent<BasicMeleeAttack>(), collision.collider.gameObject);
+                ApplyStrategy(this.GetComponent<DeathAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
 
             }                     
         }

@@ -654,11 +654,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &1297416722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
-  m_PrefabInstance: {fileID: 938809493}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1562132721
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1827139542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1004,7 +999,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 1297416722}
+  m_PlayerPrefab: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
   m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -1079,6 +1074,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7410805967115609910, guid: 34d39fcd3f505a64e999c5716bbd0333, type: 3}
+      propertyPath: enemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: f31748a7f3e61314d8e54fe95ed36435, type: 2}
     - target: {fileID: 7410805967115609912, guid: 34d39fcd3f505a64e999c5716bbd0333, type: 3}
       propertyPath: m_Name
       value: TestEnemy

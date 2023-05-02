@@ -12,9 +12,9 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
     [SerializeField]
     private float _attackRate = 3f;
   
-    public void Attack(EnemyMovement attacker, GameObject target)
+    public void Attack(EnemyMovement attacker, PlayerMovement target)
     {
-        attackTarget = target;
+        attackTarget = target.gameObject;
         Debug.Log("lobbing player");
         StartCoroutine(Lob(attacker));
         //throw new System.NotImplementedException();
