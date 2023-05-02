@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving = true;
     public bool isThrowing = false;
 
+    public int CurrentKeys = 0;
+
   
 
 
@@ -48,7 +50,9 @@ public class PlayerMovement : MonoBehaviour
         if (isMoving)
         {
             move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
-            controller.Move(move * speed * Time.deltaTime);
+            //controller.Move(move * speed * Time.deltaTime);
+            transform.Translate(move * Time.deltaTime, Space.World);
+
             if (move.magnitude > 0)
             {
                 transform.rotation = Quaternion.LookRotation(move);
@@ -120,7 +124,31 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
+   
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Key")
+        {
+            CurrentKeys++;
+            other.gameObject.SetActive(false);
+        }
+       
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("hit obj");
+        if (collision.gameObject.tag == "Door")
+        {
+            Debug.Log("hit Door");
+            if (CurrentKeys >= 1)
+            {
+                collision.gameObject.SetActive(false);
+                CurrentKeys--;
+            }
+        }
+    }
 
 
 }

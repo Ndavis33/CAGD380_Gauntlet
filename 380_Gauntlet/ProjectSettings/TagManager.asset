@@ -9,6 +9,8 @@ TagManager:
   - Boundary
   - Stick
   - Enemy
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX
