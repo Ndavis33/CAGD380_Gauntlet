@@ -12,11 +12,7 @@ public class MenuManager : MonoBehaviour
     public Text avatar1Text, avatar2Text, avatar3Text, avatar4Text;
     public Button p1Forward, p1Back, p2Forward, p2Back, p3Forward, p3Back, p4Forward, p4Back, playButton;
 
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject player3;
-    public GameObject player4;
-
+  
     public Transform player1Spawn;
     public Transform player2Spawn;
     public Transform player3Spawn;
@@ -24,10 +20,6 @@ public class MenuManager : MonoBehaviour
 
  
     public Camera mainCamera;
-    public Camera Cam_1;
-    public Camera Cam_2;
-    public Camera Cam_3;
-    public Camera Cam_4;
     public GameObject MainMenu;
     
    public int ControllerNumber;
@@ -37,7 +29,7 @@ public class MenuManager : MonoBehaviour
     private Color _yellow;
     private Color _green;
     private bool p1Locked, p2Locked, p3Locked, p4Locked = false;
-
+    public bool playersConnected = false;
 
   
     private void Awake()
@@ -48,52 +40,29 @@ public class MenuManager : MonoBehaviour
         _green = greenMat.color;
 
         avatar1.GetComponent<PlayerMovement>().enabled = false;
-       
-
-
         avatar2.GetComponent<PlayerMovement>().enabled = false;
         avatar3.GetComponent<PlayerMovement>().enabled = false;
         avatar4.GetComponent<PlayerMovement>().enabled = false;
             
-          
-            // avatar1 = Warrior;
-        //  avatar2 = Valkyrie;
-       //   avatar3 = Wizard;
-      //   avatar4 = Elf;
-
-        //    Warrior.gameObject.SetActive(false);
-        //   Valkyrie.gameObject.SetActive(false);
-        //   Elf.gameObject.SetActive(false);
-        //   Wizard.gameObject.SetActive(false);
-     
+         
        playButton.gameObject.SetActive(false);
+
+        avatar1Text.text = null;
+        avatar2Text.text = null;
+        avatar3Text.text = null;
+        avatar4Text.text = null;
     }
 
     private void Update()
     {
         
         ControllerNumber = Gamepad.all.Count;
-
-        
-        if (ControllerNumber < 1)
+        if (playersConnected == true)
         {
-            player1.gameObject.SetActive(true);
-        }
-        if (ControllerNumber <2)
-        {
-            player2.gameObject.SetActive(true);
-        }
-        if (ControllerNumber < 3)
-        {
-            player3.gameObject.SetActive(true);
-        }
-        if (ControllerNumber < 4)
-        {
-            player4.gameObject.SetActive(true);
+            StartCoroutine(ConnectingPlayers());
         }
         
-
-
+       
         
         if (p1Locked && p2Locked && p3Locked && p4Locked)
         {
@@ -104,7 +73,15 @@ public class MenuManager : MonoBehaviour
         
     }
 
+    private IEnumerator ConnectingPlayers()
+    {
+        yield return new WaitForSeconds(1f);
+        avatar1.GetComponent<PlayerMovement>().enabled = true;
+        avatar2.GetComponent<PlayerMovement>().enabled = true;
+        avatar3.GetComponent<PlayerMovement>().enabled = true;
+        avatar4.GetComponent<PlayerMovement>().enabled = true;
 
+    }
 
   
 
@@ -115,15 +92,17 @@ public class MenuManager : MonoBehaviour
     public void SplitScreen()
     {
         // GameObject player1 = Instantiate(avatar1, player1Spawn, Quaternion.identity);
-        avatar1.GetComponent<PlayerMovement>().enabled = true;
-        avatar2.GetComponent<PlayerMovement>().enabled = true;
-        avatar3.GetComponent<PlayerMovement>().enabled = true;
-        avatar4.GetComponent<PlayerMovement>().enabled = true;
-
+        avatar1.transform.position = player1Spawn.position;
+        avatar2.transform.position = player2Spawn.position;
+        avatar3.transform.position = player3Spawn.position;
+        avatar4.transform.position = player4Spawn.position;
+        playersConnected = true;
         mainCamera.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
-
+       
     }
+
+   
 
 
 
@@ -140,11 +119,6 @@ public class MenuManager : MonoBehaviour
                 p1Forward.gameObject.SetActive(false);
                 p1Back.gameObject.SetActive(false);
                 p1Locked = true;
-                // Instantiate(avatar1, player1Spawn.position, Quaternion.identity);
-                // GameObject _Player1 = GameObject.Find("Warrior Variant(Clone)");
-                //  _Player1.transform.Find("Camera").gameObject.SetActive(true);
-                avatar1.transform.position = player1Spawn.position;
-              
             }
         }
         else
@@ -166,7 +140,6 @@ public class MenuManager : MonoBehaviour
                 p2Forward.gameObject.SetActive(false);
                 p2Back.gameObject.SetActive(false);
                 p2Locked = true;
-                avatar2.transform.position = player2Spawn.position;
             }
         }
         else
@@ -188,7 +161,6 @@ public class MenuManager : MonoBehaviour
                 p3Forward.gameObject.SetActive(false);
                 p3Back.gameObject.SetActive(false);
                 p3Locked = true;
-                avatar3.transform.position = player3Spawn.position;
             }
         }
         else
@@ -210,7 +182,6 @@ public class MenuManager : MonoBehaviour
                 p4Forward.gameObject.SetActive(false);
                 p4Back.gameObject.SetActive(false);
                 p4Locked = true;
-                avatar4.transform.position = player4Spawn.position;
             }
         }
         else

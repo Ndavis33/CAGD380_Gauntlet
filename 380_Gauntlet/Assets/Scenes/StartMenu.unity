@@ -251,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1909609966297626405, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: m_Enabled
@@ -398,21 +398,14 @@ MonoBehaviour:
   p4Forward: {fileID: 2102769078}
   p4Back: {fileID: 1651630829}
   playButton: {fileID: 506835595}
-  player1: {fileID: 151117719}
-  player2: {fileID: 2072279458}
-  player3: {fileID: 1502779614}
-  player4: {fileID: 93840578}
   player1Spawn: {fileID: 2050529745}
   player2Spawn: {fileID: 262065534}
   player3Spawn: {fileID: 547464703}
   player4Spawn: {fileID: 838259183}
   mainCamera: {fileID: 1870537926}
-  Cam_1: {fileID: 0}
-  Cam_2: {fileID: 0}
-  Cam_3: {fileID: 0}
-  Cam_4: {fileID: 0}
   MainMenu: {fileID: 57063065}
   ControllerNumber: 0
+  playersConnected: 0
 --- !u!4 &82908012
 Transform:
   m_ObjectHideFlags: 0
@@ -1214,6 +1207,18 @@ MonoBehaviour:
       - m_Target: {fileID: 82908011}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SplitScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 82908011}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ConnectPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2065,6 +2070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elf Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180685, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_DefaultControlScheme
       value: 
@@ -2782,6 +2791,10 @@ PrefabInstance:
     - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_ActionName
       value: Player/CharacterSelect[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID1/leftStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID1/leftStick/right]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4102454228801008712, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: m_Name
@@ -3597,6 +3610,10 @@ PrefabInstance:
     - target: {fileID: 348118562471628039, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_Name
       value: Wizard Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 348118562471628041, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_DefaultControlScheme
