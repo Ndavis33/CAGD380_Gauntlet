@@ -42,6 +42,7 @@ public class MenuManager : MonoBehaviour
             playButton.gameObject.SetActive(false);
     }
 
+
     public void p1Lock()
     {
         if (!p1Locked)
