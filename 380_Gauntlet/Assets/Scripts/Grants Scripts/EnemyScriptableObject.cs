@@ -12,6 +12,7 @@ public class EnemyScriptableObject : ScriptableObject
     public float speed;
     public float minAttackRange;
     public float maxAttackRange;
+    public float attackRate;
 
     public Color enemyColor;
 

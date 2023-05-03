@@ -15,7 +15,7 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
     public void Attack(EnemyMovement attacker, PlayerMovement target)
     {
         //throw new System.NotImplementedException();
-        attacker.GetComponent<Collider>().isTrigger = true;
+        //attacker.GetComponent<Collider>().isTrigger = true;
         StartCoroutine(SapHealth(attacker, target));
     }
 
@@ -35,26 +35,45 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
     {
         while (_healthSapped < _maxHealthSap)
         {
-            if (attacker.attackingPlayer)
+            if (attacker.attackingPlayer && target.isActiveAndEnabled)
             {
+                //temp action until player death is handled
+                if (target.playerHealth <= 0)
+                    target.gameObject.SetActive(false);
+
                 attacker.enemySO.speed = 0;
                 target.playerHealth -= attacker.enemySO.damage;
                 _healthSapped += attacker.enemySO.damage;
                 Debug.Log("Target Health: " + target.playerHealth);
+                Debug.Log("Sapped Health: " + _healthSapped);
 
-                if(_healthSapped >= _maxHealthSap)
+                if (_healthSapped >= _maxHealthSap)
                 {
                     this.gameObject.SetActive(false);
+                    Debug.Log("Sapped max health");
                     break;
                 }
 
 
             }
             else
+            {
+                Debug.Log("Not attacking player");
                 break;
+            }
 
-            yield return new WaitForSeconds(0.25f);
-            
+
+            yield return new WaitForSeconds(attacker.enemySO.attackRate);
+
+
         }
+
+        attacker.enemySO.speed = _startSpeed;
+    }
+
+    //need to incorporate this event after we make potions
+    private void OnPotionUsed()
+    {
+        this.gameObject.SetActive(false);
     }
 }

@@ -6,28 +6,33 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
 {
     public GameObject attackTarget;
 
-    private Vector3 _positionOffset = new Vector3(-1.05f, 0.5f);
+    protected string itemToThrow;
+
+    protected Vector3 _positionOffset;
     private Vector3 _projectileStartPos;
 
     [SerializeField]
     private float _attackRate = 3f;
+
+    protected virtual void Awake()
+    {
+        _positionOffset = new Vector3(-1.05f, 0.5f);
+        itemToThrow = "Lobber Projectile";
+    }
   
     public void Attack(EnemyMovement attacker, PlayerMovement target)
     {
         attackTarget = target.gameObject;
-        Debug.Log("lobbing player");
-        StartCoroutine(Lob(attacker));
+        //Debug.Log("shooting player");
+        StartCoroutine(Shoot(attacker));
         //throw new System.NotImplementedException();
     }
 
-    private IEnumerator Lob(EnemyMovement attacker)
+    private IEnumerator Shoot(EnemyMovement attacker)
     {
-        //yield return new WaitForSeconds(1);
 
-        GameObject projectile = ObjectPooler.Instance.GetPooledObject("Lobber Projectile");
-        //Debug.Log(projectile.name);
-        //yield return new WaitForSeconds(_attackRate);
-
+        GameObject projectile = ObjectPooler.Instance.GetPooledObject(itemToThrow);
+        Debug.Log("Throwing: " + itemToThrow);
         
         if (projectile != null && attacker.attackingPlayer)
         {
@@ -35,15 +40,26 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
             _projectileStartPos += _positionOffset;
             projectile.transform.position = _projectileStartPos;
             projectile.transform.localRotation = attacker.transform.rotation;
-            projectile.GetComponent<Projectile>().enabled = true;
-            projectile.GetComponent<Projectile>().enemy = this.gameObject.GetComponent<EnemyMovement>();
+            if(itemToThrow == "Lobber Projectile")
+            {
+                Debug.Log("Getting projectile");
+                projectile.GetComponent<Projectile>().enabled = true;
+                projectile.GetComponent<Projectile>().enemy = this.gameObject.GetComponent<EnemyMovement>();
+            }
+            else if(itemToThrow == "Fireball")
+            {
+                Debug.Log("Getting fireball");
+                projectile.GetComponent<FireBall>().enabled = true;
+                projectile.GetComponent<FireBall>().enemy = this.gameObject.GetComponent<EnemyMovement>();
+            }
+            
             projectile.SetActive(true);
             
-            Debug.Log("attacking player");
+            Debug.Log("throwing item");
 
         }
 
-        yield return new WaitForSeconds(_attackRate);
+        yield return new WaitForSeconds(attacker.enemySO.attackRate);
         attacker.attackingPlayer = false;
     }
 }

@@ -6,30 +6,33 @@ public class Projectile : MonoBehaviour
 {
     public EnemyMovement enemy;
 
-    private Rigidbody _rigidbody;
+    protected Rigidbody _rigidbody;
 
     private Vector3 _startPos, _endPos;
     private Vector3 _targetDirection;
-    private Vector3 _jumpForce;
-    private Vector3 verticalForce = new Vector3(0, 9);
+    private Vector3 _shotForce;
+    protected Vector3 verticalForce; 
     //private Vector3 _positionOffset = new Vector3(1.05f, 0.5f);
 
-    private float _speed = .8f;
+    private float _speed = 0.8f;
     private float _timeStart;
     private float _distTraveled;
+    private float _lifetime = 3f;
 
     private bool _projecting;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         //enemy = gameObject.GetComponentInParent<EnemyMovement>();
 
         _rigidbody = this.GetComponent<Rigidbody>();
-        
-        
+        this.GetComponent<Renderer>().material.color = Color.gray;
+
+        verticalForce = new Vector3(0, 9);
+
+
 
     }
-
 
     private void OnEnable()
     {
@@ -40,9 +43,10 @@ public class Projectile : MonoBehaviour
         //this.transform.position = _startPos;
 
         //_timeStart = Time.time;
+        StartCoroutine(KillTimer());
 
         _targetDirection = enemy.targetPos - this.transform.position;
-        _jumpForce = (_targetDirection + verticalForce) * _speed;
+        _shotForce = (_targetDirection + verticalForce) * _speed;
 
         if (enemy == null)
             Debug.Log("enemy null");
@@ -50,7 +54,7 @@ public class Projectile : MonoBehaviour
         //Debug.Log("direction:  " + _targetDirection);
         //Debug.Log("Shooting toward " + enemy.targetPos + "from: " + this.transform.position + "at a speed of: " + _speed);
 
-        _rigidbody.AddForce(_jumpForce, ForceMode.VelocityChange);
+        _rigidbody.AddForce(_shotForce, ForceMode.VelocityChange);
     }
 
 
@@ -58,7 +62,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Player"))
         {
-            //damage player
+            enemy.closestTarget.GetComponent<PlayerMovement>().playerHealth -= enemy.enemySO.damage;
             ResetPosition();
            
         }
@@ -70,6 +74,12 @@ public class Projectile : MonoBehaviour
             Debug.Log("Distance traveled: " + _distTraveled);
             ResetPosition();
         }
+    }
+
+    private IEnumerator KillTimer()
+    {
+        yield return new WaitForSeconds(_lifetime);
+        this.gameObject.SetActive(false);
     }
 
     private void ResetPosition()

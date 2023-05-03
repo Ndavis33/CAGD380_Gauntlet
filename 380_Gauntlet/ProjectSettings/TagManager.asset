@@ -9,6 +9,7 @@ TagManager:
   - Boundary
   - Stick
   - Enemy
+  - Fireball
   layers:
   - Default
   - TransparentFX

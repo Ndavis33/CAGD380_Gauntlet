@@ -11,7 +11,8 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 targetPos;
     public float startHealth;
     public bool attackingPlayer = false;
-    private bool _still;
+    private bool _canBlink = true;
+    public bool _escaping = false;
     protected List<PlayerMovement> _targets = new List<PlayerMovement>();
 
     private void Awake()
@@ -51,6 +52,7 @@ public class EnemyMovement : MonoBehaviour
                     if (target.gameObject.activeInHierarchy)
                     {
                         minDistanceFromTarget = Vector3.Distance(this.transform.position, target.transform.position);
+                        //need to make thief target richest player when points are established
                         closestTarget = target.gameObject;
                     }
                 }
@@ -65,42 +67,94 @@ public class EnemyMovement : MonoBehaviour
             this.transform.rotation = Quaternion.LookRotation(newDirection);
             */
 
-
-            if (enemySO.enemyType == EnemyType.Lobber)
+            switch (enemySO.enemyType)
             {
-                if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
-                {
-                    _still = false;
-                    Debug.Log("Following");
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
-                }
-                else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
-                {
-                    _still = false;
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
-                    Debug.Log("Running");
-                }
-                else if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange && Vector3.Distance(this.transform.position, targetPos) < enemySO.maxAttackRange)
-                {
-                    if (!attackingPlayer)
+                case EnemyType.Demon:
+
+                    if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange)
                     {
-                        attackingPlayer = true;
+                        if (!attackingPlayer)
+                        {
+                            attackingPlayer = true;
 
-                        if (!this.GetComponent<LobAttack>())
-                            this.gameObject.AddComponent<LobAttack>();
+                            if (!this.GetComponent<DemonAttack>())
+                                this.gameObject.AddComponent<DemonAttack>();
 
-                        ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget.GetComponent<PlayerMovement>());
+                            ApplyStrategy(this.GetComponent<DemonAttack>(), closestTarget.GetComponent<PlayerMovement>());
 
 
 
-                        Debug.Log("Lobbing");
+                            Debug.Log("Firing ball");
+                        }
                     }
-                }
-                else
-                    Debug.Log("Vector3.Distance calculation error");
+
+                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+
+                    break;
+                case EnemyType.Lobber:
+
+                    if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
+                    {
+                        Debug.Log("Following");
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    }
+                    else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
+                    {
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
+                        Debug.Log("Running");
+                    }
+                    else if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange && Vector3.Distance(this.transform.position, targetPos) < enemySO.maxAttackRange)
+                    {
+                        if (!attackingPlayer)
+                        {
+                            attackingPlayer = true;
+
+                            if (!this.GetComponent<LobAttack>())
+                                this.gameObject.AddComponent<LobAttack>();
+
+                            ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget.GetComponent<PlayerMovement>());
+
+
+
+                            Debug.Log("Lobbing");
+                        }
+                    }
+                    else
+                        Debug.Log("Vector3.Distance calculation error");
+
+                    break;
+                case EnemyType.Sorcerer:
+
+                    if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange && _canBlink)
+                    {
+
+                        _canBlink = false;
+                        Debug.Log("Blinking");
+                        //_blinking = true;
+                        StartCoroutine(Blink());
+                    }
+
+                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    break;
+
+                case EnemyType.Thief:
+                    if(!_escaping)
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    else
+                    {
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
+                        if (!IsObjectVisible(this.gameObject, closestTarget.GetComponentInChildren<Camera>()))
+                            gameObject.SetActive(false);
+                    }
+                        
+
+                    break;
+
+                default:
+                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    break;
             }
-            else
-                this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                
         }
 
                        
@@ -113,6 +167,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("Attacking Player");
             attackingPlayer = true;
+            _canBlink = false;
 
             switch (enemySO.enemyType)
             {
@@ -123,36 +178,53 @@ public class EnemyMovement : MonoBehaviour
                     ApplyStrategy(this.GetComponent<DeathAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
 
                     break;
+
                 case EnemyType.Demon:
+                    if (!this.GetComponent<BasicMeleeAttack>())
+                        this.gameObject.AddComponent<BasicMeleeAttack>();
+
+                    ApplyStrategy(this.GetComponent<BasicMeleeAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
                     break;
+
                 case EnemyType.Ghost:
+                    if (!this.GetComponent<GhostAttack>())
+                        this.gameObject.AddComponent<GhostAttack>();
+
+                    ApplyStrategy(this.GetComponent<GhostAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
                     break;
+
                 case EnemyType.Grunt:
                     if (!this.GetComponent<BasicMeleeAttack>())
                         this.gameObject.AddComponent<BasicMeleeAttack>();
 
                     ApplyStrategy(this.GetComponent<BasicMeleeAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
                     break;
+
                 case EnemyType.Lobber:
                     if (!this.GetComponent<LobAttack>())
                         this.gameObject.AddComponent<LobAttack>();
 
                     ApplyStrategy(this.GetComponent<LobAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
                     break;
+
                 case EnemyType.Sorcerer:
+                    if (!this.GetComponent<BasicMeleeAttack>())
+                        this.gameObject.AddComponent<BasicMeleeAttack>();
+
+                    ApplyStrategy(this.GetComponent<BasicMeleeAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
                     break;
+
                 case EnemyType.Thief:
+
+                    if (!this.GetComponent<ThiefAttack>())
+                        this.gameObject.AddComponent<ThiefAttack>();
+
+                    ApplyStrategy(this.GetComponent<ThiefAttack>(), collision.collider.gameObject.GetComponent<PlayerMovement>());
                     break;
+
                 default:
                     break;
-            }
-
-            if (enemySO.enemyType == EnemyType.Ghost)
-            {
-                //get player's health and decrease it by enemySO.damage
-                this.gameObject.SetActive(false);
-            }
-                    
+            }                  
         }
 
     }
@@ -162,6 +234,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Player"))
         {
             attackingPlayer = false;
+            _canBlink = true;
         }
 
     }
@@ -173,6 +246,26 @@ public class EnemyMovement : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator Blink()
+    {
+        yield return new WaitForSeconds(1f);
+        this.gameObject.GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        this.gameObject.GetComponent<Renderer>().enabled = true;
+        //yield return new WaitForSeconds(1f);
+        _canBlink = true;
+     
+    }
+
+    private bool IsObjectVisible(GameObject _object, Camera camera)
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        if (GeometryUtility.TestPlanesAABB(planes, _object.GetComponent<Collider>().bounds))
+            return true;
+        else
+            return false;
     }
 
 }

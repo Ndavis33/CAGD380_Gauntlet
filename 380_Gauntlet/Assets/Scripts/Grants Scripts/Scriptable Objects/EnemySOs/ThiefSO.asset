@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d0143e863cd4fe43b688da57e7fe5eb, type: 3}
-  m_Name: DeathSO
+  m_Name: ThiefSO
   m_EditorClassIdentifier: 
-  damage: 1
-  health: 200
-  speed: 5
+  damage: 10
+  health: 1
+  speed: 7
   minAttackRange: 0
   maxAttackRange: 0
-  attackRate: 0.05
-  enemyColor: {r: 0, g: 0, b: 0, a: 0}
-  enemyType: 0
+  attackRate: 0
+  enemyColor: {r: 0, g: 0.07563218, b: 0.31132078, a: 0}
+  enemyType: 6

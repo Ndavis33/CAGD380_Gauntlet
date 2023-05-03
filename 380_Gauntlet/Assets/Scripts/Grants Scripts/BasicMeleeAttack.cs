@@ -40,7 +40,7 @@ public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
                 }
 
                 _enemySO.speed = 0;
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(_enemySO.attackRate);
                 _enemySO.speed = _startSpeed;
 
                 if (!enemy.attackingPlayer)
