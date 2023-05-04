@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hit obj");
+        //Debug.Log("hit obj");
         if (collision.gameObject.tag == "Door")
         {
             Debug.Log("hit Door");
@@ -148,6 +148,34 @@ public class PlayerMovement : MonoBehaviour
                 CurrentKeys--;
             }
         }
+
+        if (collision.gameObject.tag == "Level1")
+        {
+            if (true)
+            {
+                //Create Teleporting Script
+                Debug.Log("Load Level 1");
+                transform.position = ExitCode.FindObjectOfType<ExitCode>().Level2.position;
+            }
+        }
+        if (collision.gameObject.tag == "Level2")
+        {
+            if (true)
+            {
+                //Create Teleporting Script
+                Debug.Log("Load Level 2");
+            }
+        }
+        if (collision.gameObject.tag == "Level3")
+        {
+            if (true)
+            {
+                //Create Teleporting Script
+                Debug.Log("Load Level 3");
+            }
+        }
+
+
     }
 
 
