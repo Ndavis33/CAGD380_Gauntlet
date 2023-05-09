@@ -18,5 +18,6 @@ MonoBehaviour:
   minAttackRange: 0
   maxAttackRange: 3
   attackRate: 1
+  tagName: Sorcerer
   enemyColor: {r: 0.42277575, g: 0, b: 1, a: 0}
   enemyType: 5

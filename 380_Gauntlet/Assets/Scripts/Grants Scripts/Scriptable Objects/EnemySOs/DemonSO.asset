@@ -18,5 +18,6 @@ MonoBehaviour:
   minAttackRange: 4
   maxAttackRange: 0
   attackRate: 1
+  tagName: Demon
   enemyColor: {r: 0.49056602, g: 0.0712709, b: 0.0712709, a: 0}
   enemyType: 1

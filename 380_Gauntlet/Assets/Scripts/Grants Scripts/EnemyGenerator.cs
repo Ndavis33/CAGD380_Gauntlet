@@ -9,6 +9,7 @@ public class EnemyGenerator : MonoBehaviour
     private Vector3 _spawnPos;
     private Vector3 _spawnOffset = new Vector3(0, 0.625f);
 
+    [SerializeField]
     private float _spawnRate = 3f;
 
     private void Awake()
@@ -27,9 +28,11 @@ public class EnemyGenerator : MonoBehaviour
     private GameObject SpawnEnemy()
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        obj.tag = enemySO.tagName;
         obj.transform.position = _spawnPos;
         obj.AddComponent<EnemyMovement>();
         obj.GetComponent<EnemyMovement>().enemySO = enemySO;
+        obj.GetComponent<EnemyMovement>().enabled = true;
         return obj;
     }
 

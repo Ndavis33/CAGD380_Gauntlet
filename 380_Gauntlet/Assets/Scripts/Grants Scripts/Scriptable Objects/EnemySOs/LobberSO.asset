@@ -18,5 +18,6 @@ MonoBehaviour:
   minAttackRange: 5
   maxAttackRange: 8
   attackRate: 3
+  tagName: Lobber
   enemyColor: {r: 0.33962262, g: 0.13931623, b: 0, a: 0}
   enemyType: 4

@@ -10,19 +10,25 @@ public class EnemyMovement : MonoBehaviour
     private PlayerMovement _player;
     public Vector3 targetPos;
     public float startHealth;
+    public float localSpeed;
     public bool attackingPlayer = false;
     private bool _canBlink = true;
     public bool _escaping = false;
     protected List<PlayerMovement> _targets = new List<PlayerMovement>();
+    
 
     private void Awake()
     {
-        startHealth = enemySO.health;
-        this.GetComponent<Renderer>().material.color = enemySO.enemyColor;
+        //startHealth = enemySO.health;
+        //this.GetComponent<Renderer>().material.color = enemySO.enemyColor;
     }
 
     private void Start()
     {
+        localSpeed = enemySO.speed;
+        startHealth = enemySO.health;
+        this.GetComponent<Renderer>().material.color = enemySO.enemyColor;
+
         foreach (PlayerMovement target in GameObject.FindObjectsOfType<PlayerMovement>())
         {
             _targets.Add(target);
@@ -88,7 +94,7 @@ public class EnemyMovement : MonoBehaviour
                         }
                     }
 
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
 
                     break;
                 case EnemyType.Lobber:
@@ -96,11 +102,11 @@ public class EnemyMovement : MonoBehaviour
                     if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
                     {
                         Debug.Log("Following");
-                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
                     }
                     else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
                     {
-                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -localSpeed * Time.fixedDeltaTime);
                         Debug.Log("Running");
                     }
                     else if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange && Vector3.Distance(this.transform.position, targetPos) < enemySO.maxAttackRange)
@@ -134,15 +140,15 @@ public class EnemyMovement : MonoBehaviour
                         StartCoroutine(Blink());
                     }
 
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
                     break;
 
                 case EnemyType.Thief:
                     if(!_escaping)
-                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
                     else
                     {
-                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -enemySO.speed * Time.fixedDeltaTime);
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -localSpeed * Time.fixedDeltaTime);
                         if (!IsObjectVisible(this.gameObject, closestTarget.GetComponentInChildren<Camera>()))
                             gameObject.SetActive(false);
                     }
@@ -151,7 +157,7 @@ public class EnemyMovement : MonoBehaviour
                     break;
 
                 default:
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, enemySO.speed * Time.fixedDeltaTime);
+                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
                     break;
             }
                 
@@ -168,6 +174,8 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("Attacking Player");
             attackingPlayer = true;
             _canBlink = false;
+
+            this.GetComponent<Renderer>().material.color = Color.yellow;
 
             switch (enemySO.enemyType)
             {
@@ -224,7 +232,10 @@ public class EnemyMovement : MonoBehaviour
 
                 default:
                     break;
-            }                  
+            }
+
+            this.GetComponent<Renderer>().material.color = enemySO.enemyColor;
+
         }
 
     }

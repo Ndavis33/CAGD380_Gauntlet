@@ -10,6 +10,13 @@ TagManager:
   - Stick
   - Enemy
   - Fireball
+  - Demon
+  - Death
+  - Ghost
+  - Grunt
+  - Lobber
+  - Sorcerer
+  - Thief
   layers:
   - Default
   - TransparentFX
