@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public float localSpeed;
     public bool attackingPlayer = false;
     private bool _canBlink = true;
+    private bool _hittingWall = false;
     public bool _escaping = false;
     protected List<PlayerMovement> _targets = new List<PlayerMovement>();
     
@@ -73,94 +74,94 @@ public class EnemyMovement : MonoBehaviour
             this.transform.rotation = Quaternion.LookRotation(newDirection);
             */
 
-            switch (enemySO.enemyType)
-            {
-                case EnemyType.Demon:
+                switch (enemySO.enemyType)
+                {
+                    case EnemyType.Demon:
 
-                    if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange)
-                    {
-                        if (!attackingPlayer)
+                        if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange)
                         {
-                            attackingPlayer = true;
+                            if (!attackingPlayer)
+                            {
+                                attackingPlayer = true;
 
-                            if (!this.GetComponent<DemonAttack>())
-                                this.gameObject.AddComponent<DemonAttack>();
+                                if (!this.GetComponent<DemonAttack>())
+                                    this.gameObject.AddComponent<DemonAttack>();
 
-                            ApplyStrategy(this.GetComponent<DemonAttack>(), closestTarget.GetComponent<PlayerMovement>());
+                                ApplyStrategy(this.GetComponent<DemonAttack>(), closestTarget.GetComponent<PlayerMovement>());
 
 
 
-                            Debug.Log("Firing ball");
+                                Debug.Log("Firing ball");
+                            }
                         }
-                    }
 
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
-
-                    break;
-                case EnemyType.Lobber:
-
-                    if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
-                    {
-                        Debug.Log("Following");
                         this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
-                    }
-                    else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
-                    {
-                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -localSpeed * Time.fixedDeltaTime);
-                        Debug.Log("Running");
-                    }
-                    else if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange && Vector3.Distance(this.transform.position, targetPos) < enemySO.maxAttackRange)
-                    {
-                        if (!attackingPlayer)
+
+                        break;
+                    case EnemyType.Lobber:
+
+                        if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange)
                         {
-                            attackingPlayer = true;
-
-                            if (!this.GetComponent<LobAttack>())
-                                this.gameObject.AddComponent<LobAttack>();
-
-                            ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget.GetComponent<PlayerMovement>());
-
-
-
-                            Debug.Log("Lobbing");
+                            Debug.Log("Following");
+                            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
                         }
-                    }
-                    else
-                        Debug.Log("Vector3.Distance calculation error");
+                        else if (Vector3.Distance(this.transform.position, targetPos) < enemySO.minAttackRange)
+                        {
+                            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -localSpeed * Time.fixedDeltaTime);
+                            Debug.Log("Running");
+                        }
+                        else if (Vector3.Distance(this.transform.position, targetPos) > enemySO.minAttackRange && Vector3.Distance(this.transform.position, targetPos) < enemySO.maxAttackRange)
+                        {
+                            if (!attackingPlayer)
+                            {
+                                attackingPlayer = true;
 
-                    break;
-                case EnemyType.Sorcerer:
+                                if (!this.GetComponent<LobAttack>())
+                                    this.gameObject.AddComponent<LobAttack>();
 
-                    if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange && _canBlink)
-                    {
+                                ApplyStrategy(this.GetComponent<LobAttack>(), closestTarget.GetComponent<PlayerMovement>());
 
-                        _canBlink = false;
-                        Debug.Log("Blinking");
-                        //_blinking = true;
-                        StartCoroutine(Blink());
-                    }
 
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
-                    break;
 
-                case EnemyType.Thief:
-                    if(!_escaping)
+                                Debug.Log("Lobbing");
+                            }
+                        }
+                        else
+                            Debug.Log("Vector3.Distance calculation error");
+
+                        break;
+                    case EnemyType.Sorcerer:
+
+                        if (Vector3.Distance(this.transform.position, targetPos) > enemySO.maxAttackRange && _canBlink)
+                        {
+
+                            _canBlink = false;
+                            Debug.Log("Blinking");
+                            //_blinking = true;
+                            StartCoroutine(Blink());
+                        }
+
                         this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
-                    else
-                    {
-                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -localSpeed * Time.fixedDeltaTime);
-                        if (!IsObjectVisible(this.gameObject, closestTarget.GetComponentInChildren<Camera>()))
-                            gameObject.SetActive(false);
-                    }
-                        
+                        break;
 
-                    break;
+                    case EnemyType.Thief:
+                        if (!_escaping)
+                            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
+                        else
+                        {
+                            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, -localSpeed * Time.fixedDeltaTime);
+                            if (!IsObjectVisible(this.gameObject, closestTarget.GetComponentInChildren<Camera>()))
+                                gameObject.SetActive(false);
+                        }
 
-                default:
-                    this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
-                    break;
-            }
-                
+
+                        break;
+
+                    default:
+                        this.transform.position = Vector3.MoveTowards(transform.position, targetPos, localSpeed * Time.fixedDeltaTime);
+                        break;
+                }
+                           
         }
 
                        
@@ -238,6 +239,10 @@ public class EnemyMovement : MonoBehaviour
 
         }
 
+        if (collision.collider.gameObject.CompareTag("Boundary"))
+        {
+            _hittingWall = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -246,6 +251,11 @@ public class EnemyMovement : MonoBehaviour
         {
             attackingPlayer = false;
             _canBlink = true;
+        }
+
+        if (collision.collider.gameObject.CompareTag("Boundary"))
+        {
+            _hittingWall = false;
         }
 
     }

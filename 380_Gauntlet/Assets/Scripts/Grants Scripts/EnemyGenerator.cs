@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -21,17 +22,18 @@ public class EnemyGenerator : MonoBehaviour
 
     }
 
-    private void Start()
+    public void OnPlayButton()
     {
-        //StartCoroutine(GenerateSpawns(_spawnRate));
+        StartCoroutine("SpawnEnemy");
     }
 
-    public GameObject SpawnEnemy()
+    private GameObject SpawnEnemy()
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         obj.transform.localScale = _enemyScale;
         obj.tag = enemySO.tagName;
         obj.transform.position = _spawnPos;
+        obj.AddComponent<NavMeshAgent>();
         obj.AddComponent<EnemyMovement>();
         obj.GetComponent<EnemyMovement>().enemySO = enemySO;
         obj.GetComponent<EnemyMovement>().enabled = true;
