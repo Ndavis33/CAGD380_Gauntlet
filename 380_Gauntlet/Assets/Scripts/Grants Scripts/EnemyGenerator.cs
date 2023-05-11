@@ -8,6 +8,7 @@ public class EnemyGenerator : MonoBehaviour
 
     private Vector3 _spawnPos;
     private Vector3 _spawnOffset = new Vector3(0, 0.625f);
+    private Vector3 _enemyScale = new Vector3(0.5f, 0.5f, 0.5f);
 
     [SerializeField]
     private float _spawnRate = 3f;
@@ -28,6 +29,7 @@ public class EnemyGenerator : MonoBehaviour
     private GameObject SpawnEnemy()
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        obj.transform.localScale = _enemyScale;
         obj.tag = enemySO.tagName;
         obj.transform.position = _spawnPos;
         obj.AddComponent<EnemyMovement>();
