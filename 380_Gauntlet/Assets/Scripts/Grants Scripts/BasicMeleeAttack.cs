@@ -31,10 +31,12 @@ public class BasicMeleeAttack : MonoBehaviour, IAttackBehavior
             {
                 Debug.Log("Attacking player");
                 _player.playerHealth -= _enemySO.damage;
+                _player.updateHealth();
+
 
                 if (_player.playerHealth <= 0)
                 {
-                    player.gameObject.SetActive(false);
+                    _player.KillPlayer();
                     Debug.Log("Target eliminated");
                     break;
                 }

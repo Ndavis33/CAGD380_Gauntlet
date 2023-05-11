@@ -63,8 +63,9 @@ public class Projectile : MonoBehaviour
         if (collision.collider.gameObject.CompareTag("Player"))
         {
             enemy.closestTarget.GetComponent<PlayerMovement>().playerHealth -= enemy.enemySO.damage;
+            enemy.closestTarget.GetComponent<PlayerMovement>().updateHealth();
             if (enemy.closestTarget.GetComponent<PlayerMovement>().playerHealth <= 0)
-                collision.collider.gameObject.SetActive(false);
+                enemy.closestTarget.GetComponent<PlayerMovement>().KillPlayer();
 
             ResetPosition();
            

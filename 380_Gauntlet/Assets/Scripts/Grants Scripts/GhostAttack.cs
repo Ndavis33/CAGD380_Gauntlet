@@ -13,8 +13,10 @@ public class GhostAttack : MonoBehaviour, IAttackBehavior
     private void KamikazeGhost(EnemyMovement attacker, PlayerMovement target)
     {
         target.playerHealth -= attacker.enemySO.damage;
+        target.updateHealth();
         if (target.playerHealth <= 0)
-            target.gameObject.SetActive(false);
+            //Destroy(target.gameObject);
+            target.KillPlayer();
 
         Debug.Log("Player Health: " + target.playerHealth);
         attacker.gameObject.SetActive(false);

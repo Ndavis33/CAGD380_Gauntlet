@@ -20,6 +20,7 @@ public class ThiefAttack : MonoBehaviour, IAttackBehavior
     private IEnumerator RobPlayer(EnemyMovement attacker, PlayerMovement target)
     {
         target.playerHealth -= attacker.enemySO.damage;
+        target.updateHealth();
         attacker._escaping = true;
         yield return null;
         /*

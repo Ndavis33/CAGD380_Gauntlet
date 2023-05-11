@@ -39,10 +39,11 @@ public class DeathAttack : MonoBehaviour, IAttackBehavior
             {
                 //temp action until player death is handled
                 if (target.playerHealth <= 0)
-                    target.gameObject.SetActive(false);
+                    target.KillPlayer();
 
                 attacker.enemySO.speed = 0;
                 target.playerHealth -= attacker.enemySO.damage;
+                target.updateHealth();
                 _healthSapped += attacker.enemySO.damage;
                 Debug.Log("Target Health: " + target.playerHealth);
                 Debug.Log("Sapped Health: " + _healthSapped);

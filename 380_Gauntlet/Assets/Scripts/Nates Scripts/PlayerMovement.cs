@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,7 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     public int CurrentKeys = 0;
 
-  
+    public Text _Player1health;
+    public Text _Player2health;
+    public Text _Player3health;
+    public Text _Player4health;
 
 
 
@@ -38,15 +42,51 @@ public class PlayerMovement : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
         speed = BasePlayer.baseSpeed;
-       
+        updateHealth();
+
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
        
     }
 
+    public void KillPlayer()
+    {
+        Debug.Log("Kill Player");
+        StartCoroutine(killRoutine());
+    }
+
+    IEnumerator killRoutine()
+    {
+        yield return new WaitForEndOfFrame();
+        transform.GetChild(0).parent = null;
+        gameObject.SetActive(false);
+    }
+
+  public void updateHealth()
+    {
+
+        if (this.gameObject.name == "Player_1")
+        {
+            _Player1health.text = "Player 1 Health:" + playerHealth.ToString();
+        }
+        if (this.gameObject.name == "Player_2")
+        {
+            _Player2health.text = "Player 2 Health:" + playerHealth.ToString();
+        }
+        if (this.gameObject.name == "Player_3")
+        {
+            _Player3health.text = "Player 3 Health:" + playerHealth.ToString();
+        }
+        if (this.gameObject.name == "Player_4")
+        {
+            _Player4health.text = "Player 4 Health:" + playerHealth.ToString();
+        }
+    }
+
     private void FixedUpdate()
     {
-      
+        
+
         if (isMoving)
         {
             move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);

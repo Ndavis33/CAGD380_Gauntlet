@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 322467070, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497781, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_RootOrder
@@ -21,15 +21,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497781, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2
+      value: 8.108097
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497781, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497781, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.7
+      value: 1.117199
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497781, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,9 +63,13 @@ PrefabInstance:
       propertyPath: BasePlayer
       value: 
       objectReference: {fileID: 11400000, guid: bdfe0a92ada38fa45b9379b802f7c26e, type: 2}
+    - target: {fileID: 1342457566626497782, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: _Player2health
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_Name
-      value: Warrior Variant
+      value: Player_2
       objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_TagString
