@@ -15,6 +15,13 @@ TagManager:
   - Level2
   - Level1
   - Level3
+  - Lobber
+  - Demon
+  - Grunt
+  - Death
+  - Thief
+  - Ghost
+  - Sorcerer
   layers:
   - Default
   - TransparentFX
