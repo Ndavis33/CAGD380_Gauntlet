@@ -23,10 +23,10 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GenerateSpawns(_spawnRate));
+        //StartCoroutine(GenerateSpawns(_spawnRate));
     }
 
-    private GameObject SpawnEnemy()
+    public GameObject SpawnEnemy()
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         obj.transform.localScale = _enemyScale;
