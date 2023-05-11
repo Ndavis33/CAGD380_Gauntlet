@@ -9,14 +9,12 @@ TagManager:
   - Boundary
   - Stick
   - Enemy
-  - Fireball
-  - Demon
-  - Death
-  - Ghost
-  - Grunt
-  - Lobber
-  - Sorcerer
-  - Thief
+  - Key
+  - Door
+  - Exit
+  - Level2
+  - Level1
+  - Level3
   layers:
   - Default
   - TransparentFX
