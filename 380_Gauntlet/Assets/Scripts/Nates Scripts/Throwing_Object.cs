@@ -74,6 +74,11 @@ public class Throwing_Object : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(collision.collider.gameObject);
         }
+        if (collision.gameObject.tag == "Generator")
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.collider.gameObject);
+        }
 
         if (collision.gameObject.tag == "Death")
         {
