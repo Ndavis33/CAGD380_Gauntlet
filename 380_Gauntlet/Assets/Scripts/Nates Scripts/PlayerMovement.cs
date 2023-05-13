@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public Text _Player3health;
     public Text _Player4health;
 
-
+    public static int playerScore;
 
     private void Awake()
     {
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         inputs = this.GetComponent<PlayerInput>();
         speed = BasePlayer.baseSpeed;
         updateHealth();
-
+        playerScore = 0;
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
        
@@ -65,19 +65,19 @@ public class PlayerMovement : MonoBehaviour
   public void updateHealth()
     {
 
-        if (this.gameObject.name == "Player_1")
+        if (this.gameObject.name == "Warrior Variant")
         {
             _Player1health.text = "Player 1 Health:" + playerHealth.ToString();
         }
-        if (this.gameObject.name == "Player_2")
+        if (this.gameObject.name == "Valkyrie Variant")
         {
             _Player2health.text = "Player 2 Health:" + playerHealth.ToString();
         }
-        if (this.gameObject.name == "Player_3")
+        if (this.gameObject.name == "Wizard Variant")
         {
             _Player3health.text = "Player 3 Health:" + playerHealth.ToString();
         }
-        if (this.gameObject.name == "Player_4")
+        if (this.gameObject.name == "Elf Variant")
         {
             _Player4health.text = "Player 4 Health:" + playerHealth.ToString();
         }

@@ -22,6 +22,8 @@ TagManager:
   - Thief
   - Ghost
   - Sorcerer
+  - Fireball
+  - Generator
   layers:
   - Default
   - TransparentFX
