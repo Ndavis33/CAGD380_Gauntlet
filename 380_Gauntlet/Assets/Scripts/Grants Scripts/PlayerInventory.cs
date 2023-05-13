@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potion : MonoBehaviour
+//Allows the player to interact with items in inventory
+public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField]
-    private float range;
-    //public PlayerInventorySO inventorySO;
+    /*
+    public PlayerInventorySO inventorySO;
 
-
-    void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        if(Input.GetKeyDown(KeyCode.X) && inventorySO.numPotions > 0)
         {
-            //inventorySO.numPotions++;
-            ClearEnemies();
-            this.gameObject.SetActive(false);
+            inventorySO.numPotions--;
         }
+        else if (Input.GetKeyDown(KeyCode.X) && inventorySO.numPotions <= 0)
+        {
+            Debug.Log("Out of potions");
+        }
+
     }
 
-    private void ClearEnemies()
+    private void UsePotion()
     {
         Camera cam = Camera.main;
         Collider[] hitColliders = Physics.OverlapSphere(cam.transform.position, range);
@@ -31,5 +33,5 @@ public class Potion : MonoBehaviour
             }
         }
     }
-
+    */
 }
