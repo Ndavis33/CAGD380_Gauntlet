@@ -13,6 +13,7 @@ public class EnemyGenerator : MonoBehaviour
 
     [SerializeField]
     private float _spawnRate = 3f;
+    private bool _spawnStarted = false;
 
     private void Awake()
     {
@@ -24,8 +25,18 @@ public class EnemyGenerator : MonoBehaviour
 
     public void OnPlayButton()
     {
-        StartCoroutine("SpawnEnemy");
+        //_spawnStarted = true;
+        StartCoroutine("GenerateSpawns", _spawnRate);
     }
+
+    /*
+     * Used for testing
+    public void Start()
+    {
+        //_spawnStarted = true;
+        StartCoroutine("GenerateSpawns", _spawnRate);
+    }
+    */
 
     private GameObject SpawnEnemy()
     {

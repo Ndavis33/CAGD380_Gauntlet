@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class TreasurePickup : MonoBehaviour
 {
+    [SerializeField]
+    private int _value;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //PlayerMovement needs a score variable first
-            //other.gameObject.GetComponent<PlayerMovement>().playerScore += 100;
+            PlayerMovement.playerScore += _value;
             gameObject.SetActive(false);
         }
     }

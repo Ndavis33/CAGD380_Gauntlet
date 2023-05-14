@@ -7,6 +7,7 @@ public class Potion : MonoBehaviour
     [SerializeField]
     private float range;
     //public PlayerInventorySO inventorySO;
+    private GameObject _user;
 
 
     void OnTriggerEnter(Collider other)
@@ -14,6 +15,7 @@ public class Potion : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //inventorySO.numPotions++;
+            _user = other.gameObject;
             ClearEnemies();
             this.gameObject.SetActive(false);
         }
@@ -21,7 +23,7 @@ public class Potion : MonoBehaviour
 
     private void ClearEnemies()
     {
-        Camera cam = Camera.main;
+        Camera cam = _user.GetComponentInChildren<Camera>();
         Collider[] hitColliders = Physics.OverlapSphere(cam.transform.position, range);
         foreach (Collider hitCollider in hitColliders)
         {
