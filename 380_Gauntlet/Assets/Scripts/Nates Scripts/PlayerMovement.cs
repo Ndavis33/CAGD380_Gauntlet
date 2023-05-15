@@ -156,11 +156,12 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator firingPause()
     {
-
-        isMoving = false;
+        isThrowing = true;
+        //isMoving = false;
         yield return new WaitForSeconds(1f);
-        isMoving = true;
-        
+        //isMoving = true;
+        isThrowing = false;
+
     }
 
 
