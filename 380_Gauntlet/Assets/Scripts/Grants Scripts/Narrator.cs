@@ -9,9 +9,13 @@ public class Narrator : MonoBehaviour
     private AudioSource playerType;
     private PlayerSO _playerSO;
     private PlayerMovement _player;
-    private bool _isFirstHit = true;
-    private bool _isFirstKey = true;
-    private bool _isFirstAttack = true;
+    private static bool _isFirstHit = true;
+    private static bool _isFirstKey = true;
+    private static bool _isFirstAttack = true;
+    private static bool _isFirstPotion = true;
+    private static bool _isFirstTreasure = true;
+    private static bool _isFirstFood = true;
+    private static bool _isFirstMovement = true;
     private bool _canWarn = true;
 
     private void Awake()
@@ -57,12 +61,17 @@ public class Narrator : MonoBehaviour
             {
                 _canWarn = false;
                 StartCoroutine(HealthWarning());               
-            }
-            
+            }            
         }
 
         if (_player.playerHealth > 200)
             _canWarn = true;
+
+        if (_player.isMoving && _isFirstMovement)
+        {
+            _isFirstMovement = false;
+            level1.Play();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -76,6 +85,15 @@ public class Narrator : MonoBehaviour
             }
         }
 
+        if (collision.collider.gameObject.CompareTag("Level1"))
+        {
+            level2.Play();
+        }
+
+        if (collision.collider.gameObject.CompareTag("Level2"))
+        {
+            level3.Play();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -89,7 +107,32 @@ public class Narrator : MonoBehaviour
             }
         }
 
+        if (other.gameObject.CompareTag("Potion"))
+        {
+            if (_isFirstPotion)
+            {
+                _isFirstPotion = false;
+                potionPickup.Play();
+            }
+        }
 
+        if (other.gameObject.CompareTag("Treasure"))
+        {
+            if (_isFirstTreasure)
+            {
+                _isFirstTreasure = false;
+                treasurePickup.Play();
+            }
+        }
+
+        if (other.gameObject.CompareTag("Food"))
+        {
+            if (_isFirstFood)
+            {
+                _isFirstFood = false;
+                foodPickup.Play();
+            }
+        }
     }
 
 
