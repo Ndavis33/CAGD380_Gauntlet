@@ -8,15 +8,17 @@ public class Potion : MonoBehaviour
     private float range;
     //public PlayerInventorySO inventorySO;
     private GameObject _user;
-
+    public PlayerMovement playerMovement;
+ 
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             //inventorySO.numPotions++;
+            
             _user = other.gameObject;
-            ClearEnemies();
+           // ClearEnemies();
             this.gameObject.SetActive(false);
         }
     }

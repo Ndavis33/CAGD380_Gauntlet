@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     public bool hasKey;
     public bool isMoving = true;
     public bool isThrowing = false;
+    public bool HasPotion = false;
+    public List<GameObject> Potions;
 
     public int CurrentKeys = 0;
 
@@ -112,7 +114,10 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void Potion(InputAction.CallbackContext context)
+    {
 
+    }
     //Logic for proper player movement
     
   public void Stop(InputAction.CallbackContext _up)
@@ -139,27 +144,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Melee(InputAction.CallbackContext context)
-    {
-       // StartCoroutine(MeleeSpeed());
-       // Debug.Log("Player Should Melee");
-    }
-
-   
-    private IEnumerator Potion()
-    {
-     
-        //Potion code...
-       yield return new WaitForSeconds(3);
-     
-    }
+  
 
     private IEnumerator firingPause()
     {
         isThrowing = true;
-        //isMoving = false;
+        isMoving = false;
         yield return new WaitForSeconds(1f);
-        //isMoving = true;
+        isMoving = true;
         isThrowing = false;
 
     }
