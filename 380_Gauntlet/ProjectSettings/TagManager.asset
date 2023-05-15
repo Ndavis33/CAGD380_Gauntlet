@@ -24,6 +24,9 @@ TagManager:
   - Sorcerer
   - Fireball
   - Generator
+  - Food
+  - Potion
+  - Treasure
   layers:
   - Default
   - TransparentFX
