@@ -166,17 +166,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""06a9b376-9856-4fa8-bcce-a7798bcae8da"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PressXtoJoin"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4930f93b-8dde-4c4b-bbd3-3e02736d6c28"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
@@ -216,6 +205,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CharacterSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06a9b376-9856-4fa8-bcce-a7798bcae8da"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressXtoJoin"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
