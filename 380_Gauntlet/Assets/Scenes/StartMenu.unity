@@ -1454,6 +1454,9 @@ MonoBehaviour:
   Elf: {fileID: 8820973630925180675, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
   Wizard: {fileID: 348118562471628039, guid: 289d444171ba886459eefbf41844e575, type: 3}
   PlayerHealth: 100
+  Level_1: {fileID: 0}
+  Level_2: {fileID: 0}
+  Level_3: {fileID: 0}
 --- !u!1 &219324383
 GameObject:
   m_ObjectHideFlags: 0
@@ -6059,6 +6062,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Level_1
+      value: 
+      objectReference: {fileID: 1671126657}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Level_2
+      value: 
+      objectReference: {fileID: 2013897790}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Level_3
+      value: 
+      objectReference: {fileID: 156549108}
     - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: _Player1health
       value: 

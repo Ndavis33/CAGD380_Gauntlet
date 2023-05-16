@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
     private int CurrentKeys = 0;
     public int CurrentPotions = -1;
-
+    private EnemyGenerator generatorStart;
+    private List<EnemyGenerator> generators = new List<EnemyGenerator>();
     public Text _Player1health;
     public Text _Player2health;
     public Text _Player3health;
@@ -44,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     public static int playerScore;
 
+    public GameObject Level_1;
+    public GameObject Level_2;
+    public GameObject Level_3;
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -241,11 +245,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "Level1")
         {
+            
             if (true)
             {
                 //Create Teleporting Script
                 Debug.Log("Load Leve2");
                 transform.position = ExitCode.FindObjectOfType<ExitCode>().Level2.position;
+
             }
         }
         if (collision.gameObject.tag == "Level2")

@@ -8,16 +8,17 @@ public class PlayerManager : MonoBehaviour
 
     public int PlayerHealth;
 
+   
+    public GameObject Level_1;
+    public GameObject Level_2;
+    public GameObject Level_3;
+
+
     private void Awake()
     {
-       
-
-       
+        Level_2.SetActive(false);
+        Level_3.SetActive(false);
     }
 
-
-
-
-
-
+    
 }
