@@ -547,7 +547,7 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: e835be9454836e84097a79e800047308, type: 2}
   yellowMat: {fileID: 2100000, guid: 44fc93841d4454d46aabdf19289dead3, type: 2}
   greenMat: {fileID: 2100000, guid: eab52685e556b1444a5db75354cf848a, type: 2}
-  avatar1: {fileID: 230013866}
+  avatar1: {fileID: 0}
   avatar2: {fileID: 1693518354}
   avatar3: {fileID: 359979838}
   avatar4: {fileID: 1621337711}
@@ -604,7 +604,7 @@ MonoBehaviour:
   - {fileID: 1909609966297626411, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
   - {fileID: 348118562471628039, guid: 289d444171ba886459eefbf41844e575, type: 3}
   cameras:
-  - {fileID: 1232539577}
+  - {fileID: 0}
   - {fileID: 1559404556}
   - {fileID: 0}
   - {fileID: 991881677}
@@ -1618,38 +1618,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &230013866 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4102454228801008712, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-  m_PrefabInstance: {fileID: 1232539576}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &230013868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230013866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b383ea4026aa34d9f1544206057c99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstHit: {fileID: 1748400864}
-  keyPickup: {fileID: 1056992078}
-  stickThrown: {fileID: 1936720168}
-  foodPickup: {fileID: 721945174}
-  potionPickup: {fileID: 415676021}
-  treasurePickup: {fileID: 1013260686}
-  level1: {fileID: 1128160316}
-  level2: {fileID: 1655380119}
-  level3: {fileID: 219324385}
-  lowOnHealth: {fileID: 2033846245}
-  warrior: {fileID: 1124281840}
-  wizard: {fileID: 1337493714}
-  valkyrie: {fileID: 1330366776}
-  elf: {fileID: 1599695410}
-  _healthWarning: 50
 --- !u!1001 &259174085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5957,45 +5925,65 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3048803262125638728, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048803262125638735, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048803262125638735, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048803262125638735, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048803262125638735, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048803262125638735, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: elf
+      value: 
+      objectReference: {fileID: 1599695410}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: level1
+      value: 
+      objectReference: {fileID: 1128160316}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: level2
+      value: 
+      objectReference: {fileID: 1655380119}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: level3
+      value: 
+      objectReference: {fileID: 219324385}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: wizard
+      value: 
+      objectReference: {fileID: 1337493714}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: warrior
+      value: 
+      objectReference: {fileID: 1124281840}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: firstHit
+      value: 
+      objectReference: {fileID: 1748400864}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: valkyrie
+      value: 
+      objectReference: {fileID: 1330366776}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: keyPickup
+      value: 
+      objectReference: {fileID: 1056992078}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: foodPickup
+      value: 
+      objectReference: {fileID: 721945174}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: lowOnHealth
+      value: 
+      objectReference: {fileID: 2033846245}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: stickThrown
+      value: 
+      objectReference: {fileID: 1936720168}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: potionPickup
+      value: 
+      objectReference: {fileID: 415676021}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: treasurePickup
+      value: 
+      objectReference: {fileID: 1013260686}
     - target: {fileID: 4102454228801008708, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008708, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.53722626
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008708, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.53722626
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008708, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.53722626
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4102454228801008708, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6037,38 +6025,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008709, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
-      value: 2fd53af0-3412-4c8c-90e7-75ba7eaf3d29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
-      value: 62bfede1-6e4f-46c9-aa29-b1a45ac25891
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
-      value: Player/PressXtoJoin[/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008710, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
-      value: Player/CharacterSelect[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID1/leftStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID1/leftStick/right]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: _Player1health
       value: 
@@ -6089,21 +6045,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Valkyrie Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 7048432308932446486, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048432308932446486, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
---- !u!20 &1232539577 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3048803262125638732, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
-  m_PrefabInstance: {fileID: 1232539576}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232614449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +6698,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1641226082, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2327761750566566615, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
       propertyPath: m_Name
       value: Health_Canvas
@@ -7616,7 +7563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 348118562471628043, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 348118562471628043, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_LocalScale.x
@@ -9053,7 +9000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1769503427
 Transform:
   m_ObjectHideFlags: 0
