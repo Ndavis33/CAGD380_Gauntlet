@@ -23,7 +23,7 @@ public class LobAttack : MonoBehaviour, IAttackBehavior
     public void Attack(EnemyMovement attacker, PlayerMovement target)
     {
         attackTarget = target.gameObject;
-        //Debug.Log("shooting player");
+        Debug.Log("attacker: " + attacker.name);
         StartCoroutine(Shoot(attacker));
         //throw new System.NotImplementedException();
     }
