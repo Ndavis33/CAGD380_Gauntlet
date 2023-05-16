@@ -42,42 +42,42 @@ public class Throwing_Object : MonoBehaviour
         if (collision.gameObject.tag == "Demon")
         {
             Destroy(this.gameObject);
-           Destroy(collision.collider.gameObject);
+           collision.collider.gameObject.SetActive(false);
         }
         
         if (collision.gameObject.tag == "Ghost")
         {
             Destroy(this.gameObject);
-            Destroy(collision.collider.gameObject);
+            collision.collider.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "Grunt")
         {
             Destroy(this.gameObject);
-            Destroy(collision.collider.gameObject);
+            collision.collider.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "Lobber")
         {
             Destroy(this.gameObject);
-            Destroy(collision.collider.gameObject);
+            collision.collider.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "Sorcerer")
         {
             Destroy(this.gameObject);
-            Destroy(collision.collider.gameObject);
+            collision.collider.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "Thief")
         {
             Destroy(this.gameObject);
-            Destroy(collision.collider.gameObject);
+            collision.collider.gameObject.SetActive(false);
         }
         if (collision.gameObject.tag == "Generator")
         {
             Destroy(this.gameObject);
-            Destroy(collision.collider.gameObject);
+            collision.collider.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "Death")

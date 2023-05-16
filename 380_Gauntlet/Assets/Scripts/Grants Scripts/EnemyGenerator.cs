@@ -14,7 +14,11 @@ public class EnemyGenerator : MonoBehaviour
 
     [SerializeField]
     private float _spawnRate = 3f;
+    //[SerializeField]
+    //private int _maxSpawns;
+    // its too late for object pooling
     private bool _spawnStarted = false;
+    private int _numSpawns = 0;
 
     private void Awake()
     {
@@ -39,7 +43,7 @@ public class EnemyGenerator : MonoBehaviour
     private void Init()
     {
         //_spawnStarted = true;
-        Debug.Log("Generating...");
+        //Debug.Log("Generating...");
         StartCoroutine("GenerateSpawns", _spawnRate);
     }
 
@@ -51,7 +55,23 @@ public class EnemyGenerator : MonoBehaviour
         StartCoroutine("GenerateSpawns", _spawnRate);
     }
     */
+    private GameObject BetterSpawnEnemy()
+    {
+        Debug.Log("Generating: " + enemySO.enemyType.ToString());
+        GameObject spawn = ObjectPooler.Instance.GetPooledObject(enemySO.enemyType.ToString());
 
+        if(spawn != null)
+        {
+            spawn.transform.localScale = _enemyScale;
+            spawn.tag = enemySO.tagName;
+            spawn.transform.position = _spawnPos;
+            spawn.GetComponent<EnemyMovement>().enemySO = enemySO;
+            spawn.GetComponent<EnemyMovement>().enabled = true;
+            spawn.SetActive(true);
+        }
+        
+        return spawn;
+    }
     private GameObject SpawnEnemy()
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
@@ -69,7 +89,8 @@ public class EnemyGenerator : MonoBehaviour
     {
         while (true)
         {
-            SpawnEnemy();
+            BetterSpawnEnemy();
+            //_numSpawns++;
             yield return new WaitForSeconds(spawnRate);
         }
     }
