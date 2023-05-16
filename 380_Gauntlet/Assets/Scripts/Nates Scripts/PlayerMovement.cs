@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
    // public GameObject weapon;
     public GameObject ThrowingStick;
     // public GameObject Camera; 
-    private Potion _potion;
+    
 
     public bool ToggleInvisibility = false;
     public bool hasKey;
@@ -36,25 +36,32 @@ public class PlayerMovement : MonoBehaviour
 
     private int CurrentKeys = 0;
     public int CurrentPotions = -1;
-    private EnemyGenerator generatorStart;
-    private List<EnemyGenerator> generators = new List<EnemyGenerator>();
+    
     public Text _Player1health;
     public Text _Player2health;
     public Text _Player3health;
     public Text _Player4health;
 
-    public int playerScore;
+    public Text playerScore_1;
+    public Text playerScore_2;
+    public Text playerScore_3;
+    public Text playerScore_4;
+
+    public float playerScore = 0;
 
     public GameObject Level_1;
     public GameObject Level_2;
     public GameObject Level_3;
+
+    public bool healthTimer;
+ 
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
         inputs = this.GetComponent<PlayerInput>();
         speed = BasePlayer.baseSpeed;
         updateHealth();
-        playerScore = 0;
+        
         CurrentPotions = -1;
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
@@ -81,25 +88,38 @@ public class PlayerMovement : MonoBehaviour
         if (this.gameObject.name == "Player_1")
         {
             _Player1health.text = "Player 1 Health:" + playerHealth.ToString();
+            playerScore_1.text = "Score:" + playerScore.ToString();
+            StartCoroutine(HealthTimer());
         }
         if (this.gameObject.name == "Player_2")
         {
             _Player2health.text = "Player 2 Health:" + playerHealth.ToString();
+            playerScore_2.text = "Score:" + playerScore.ToString();
+            
         }
         if (this.gameObject.name == "Player_3")
         {
             _Player3health.text = "Player 3 Health:" + playerHealth.ToString();
+            playerScore_3.text = "Score:" + playerScore.ToString();
+            
         }
         if (this.gameObject.name == "Player_4")
         {
             _Player4health.text = "Player 4 Health:" + playerHealth.ToString();
+            playerScore_4.text = "Score:" + playerScore.ToString();
+            
         }
     }
 
     private void FixedUpdate()
     {
+        if (healthTimer == true)
+        {
+            playerHealth--;
+            updateHealth();
+        }
       
-
+      
         if (isMoving)
         {
             move = new Vector3(moveInput.x * speed, 0, moveInput.y * speed);
@@ -198,6 +218,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+   
+    private IEnumerator HealthTimer()
+    {
+        if (healthTimer)
+        {
+            healthTimer = true;
+            yield return new WaitForSeconds(1f);
+            healthTimer = false;
+        }
+       
+        
+        
+    }
 
    
 
@@ -208,7 +241,13 @@ public class PlayerMovement : MonoBehaviour
             CurrentKeys++;
             other.gameObject.SetActive(false);
         }
+        if (other.gameObject.tag == "Treasure")
+        {
 
+            playerScore += 100;
+            other.gameObject.SetActive(false);
+
+        }
 
         if (other.CompareTag("Potion"))
         {
@@ -242,6 +281,10 @@ public class PlayerMovement : MonoBehaviour
                 collision.gameObject.SetActive(false);
                 CurrentKeys--;
             }
+        }
+        if (collision.gameObject.tag == "Treasure")
+        {
+            playerScore += 100;
         }
 
         if (collision.gameObject.tag == "Level1")
