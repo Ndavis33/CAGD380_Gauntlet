@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public Text _Player3health;
     public Text _Player4health;
 
-    public static int playerScore;
+    public int playerScore;
 
     public GameObject Level_1;
     public GameObject Level_2;
