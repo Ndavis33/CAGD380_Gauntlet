@@ -82,14 +82,18 @@ public class PlayerMovement : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-  public void updateHealth()
+    private void Start()
+    {
+        StartCoroutine(HealthTimer());
+    }
+    public void updateHealth()
     {
 
         if (this.gameObject.name == "Player_1")
         {
             _Player1health.text = "Player 1 Health:" + playerHealth.ToString();
             playerScore_1.text = "Score:" + playerScore.ToString();
-            StartCoroutine(HealthTimer());
+           
         }
         if (this.gameObject.name == "Player_2")
         {
@@ -113,11 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (healthTimer == true)
-        {
-            playerHealth--;
-            updateHealth();
-        }
+        updateHealth();
       
       
         if (isMoving)
@@ -218,18 +218,18 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-   
     private IEnumerator HealthTimer()
     {
-        if (healthTimer)
+
+        while (playerHealth > 0)
         {
-            healthTimer = true;
+            playerHealth--;
             yield return new WaitForSeconds(1f);
-            healthTimer = false;
         }
-       
-        
-        
+            
+           
+     
+    
     }
 
    
