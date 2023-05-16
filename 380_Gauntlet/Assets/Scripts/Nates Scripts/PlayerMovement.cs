@@ -58,7 +58,8 @@ public class PlayerMovement : MonoBehaviour
         CurrentPotions = -1;
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
-       
+        Level_2.SetActive(false);
+        Level_3.SetActive(false);
     }
 
     public void KillPlayer()
@@ -245,30 +246,24 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "Level1")
         {
-            
-            if (true)
-            {
-                //Create Teleporting Script
-                Debug.Log("Load Leve2");
-                transform.position = ExitCode.FindObjectOfType<ExitCode>().Level2.position;
-
-            }
+            this.transform.position = ExitCode.FindObjectOfType<ExitCode>().Level2.position;
+            Level_2.SetActive(true);
+            EnemyGenerator.FindObjectOfType<EnemyGenerator>().OnPlayButton();
         }
+
         if (collision.gameObject.tag == "Level2")
         {
-            if (true)
-            {
                 transform.position = ExitCode.FindObjectOfType<ExitCode>().Level3.position;
-                Debug.Log("Load Level 3");
-            }
+                Level_3.SetActive(true);
+                EnemyGenerator.FindObjectOfType<EnemyGenerator>().OnPlayButton();
+            Debug.Log("Load Level 3");
         }
+
         if (collision.gameObject.tag == "Level3")
         {
-            if (true)
-            {
                 transform.position = ExitCode.FindObjectOfType<ExitCode>().Level1.position;
+                Level_1.SetActive(true);
                 Debug.Log("Load Level 0");
-            }
         }
 
 

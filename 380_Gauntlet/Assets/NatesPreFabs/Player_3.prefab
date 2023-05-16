@@ -36,16 +36,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.60846186
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.60846186
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.60846186
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.132633
+      value: -1.9166666
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5847912
+      value: -8.8
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,15 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180687, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -77,3 +89,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+--- !u!1 &348118562471628039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8820973630925180675, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+  m_PrefabInstance: {fileID: 9132920939685954052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &359979840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348118562471628039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b383ea4026aa34d9f1544206057c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstHit: {fileID: 0}
+  keyPickup: {fileID: 0}
+  stickThrown: {fileID: 0}
+  foodPickup: {fileID: 0}
+  potionPickup: {fileID: 0}
+  treasurePickup: {fileID: 0}
+  level1: {fileID: 0}
+  level2: {fileID: 0}
+  level3: {fileID: 0}
+  lowOnHealth: {fileID: 0}
+  warrior: {fileID: 0}
+  wizard: {fileID: 0}
+  valkyrie: {fileID: 0}
+  elf: {fileID: 0}
+  _healthWarning: 50

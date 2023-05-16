@@ -6,8 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject Warrior,Valkyrie,Elf,Wizard;
 
-    public int PlayerHealth;
-
+   
    
     public GameObject Level_1;
     public GameObject Level_2;
@@ -16,9 +15,9 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        Level_2.SetActive(false);
-        Level_3.SetActive(false);
+       //Level_2.SetActive(false);
+        //Level_3.SetActive(false);
     }
 
-    
+  
 }

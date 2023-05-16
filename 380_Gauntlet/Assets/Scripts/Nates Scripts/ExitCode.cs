@@ -8,8 +8,8 @@ public class ExitCode : MonoBehaviour
     public Transform Level2;
     public Transform Level3;
 
-    private bool Level2Active = false;
-    private bool Level3Active = false;
+  // private bool Level2Active = false;
+  //  private bool Level3Active = false;
 
   
     public int LevelSelect = 0;
