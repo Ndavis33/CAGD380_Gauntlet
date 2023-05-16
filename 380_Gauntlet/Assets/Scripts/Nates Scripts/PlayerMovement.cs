@@ -22,15 +22,20 @@ public class PlayerMovement : MonoBehaviour
    // public GameObject weapon;
     public GameObject ThrowingStick;
     // public GameObject Camera; 
+    private Potion _potion;
 
     public bool ToggleInvisibility = false;
     public bool hasKey;
     public bool isMoving = true;
     public bool isThrowing = false;
     public bool HasPotion = false;
+
+    private float range;
+
     public List<GameObject> Potions;
 
-    public int CurrentKeys = 0;
+    private int CurrentKeys = 0;
+    public int CurrentPotions = -1;
 
     public Text _Player1health;
     public Text _Player2health;
@@ -46,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         speed = BasePlayer.baseSpeed;
         updateHealth();
         playerScore = 0;
+        CurrentPotions = -1;
         // weapon = transform.Find("Stick").gameObject;
         // weapon.SetActive(false);
        
@@ -87,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+      
 
         if (isMoving)
         {
@@ -116,16 +122,47 @@ public class PlayerMovement : MonoBehaviour
 
     public void Potion(InputAction.CallbackContext context)
     {
+        if (context.performed)
+        {
+            if (CurrentPotions <= Potions.Count)
+            {
+                Potions[CurrentPotions].SetActive(false);
+               // _potion.ClearEnemies();
+                CurrentPotions--;
+            }
+            ClearEnemies();
+           
+        }
+        if (context.canceled)
+        {
+           //_potion.ClearEnemies();
+            return;
+
+        }
+
+       // _potion.ClearEnemies();
 
     }
     //Logic for proper player movement
-    
-  public void Stop(InputAction.CallbackContext _up)
+
+    public void Stop(InputAction.CallbackContext _up)
   {
         moveInput = Vector2.zero;
        
     }
-        
+
+    public void ClearEnemies()
+    {
+        Camera cam = this.GetComponentInChildren<Camera>();
+        Collider[] hitColliders = Physics.OverlapSphere(cam.transform.position, range);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.GetComponent<EnemyMovement>())
+            {
+                hitCollider.gameObject.SetActive(false);
+            }
+        }
+    }
 
 
     public void Throwing(InputAction.CallbackContext context)
@@ -166,7 +203,25 @@ public class PlayerMovement : MonoBehaviour
             CurrentKeys++;
             other.gameObject.SetActive(false);
         }
-       
+
+
+        if (other.CompareTag("Potion"))
+        {
+            CurrentPotions++;
+            //inventorySO.numPotions++;
+            Debug.Log("hit Potion");
+            if ( CurrentPotions < Potions.Count)
+            {
+                Debug.Log("Add Potion to UI and Inventory");
+                GameObject potionsForPlayer = Potions[CurrentPotions];
+                potionsForPlayer.SetActive(true);
+               
+            }
+         
+            // ClearEnemies();
+           other.gameObject.SetActive(false);
+        }
+
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -213,5 +268,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    
 
 }

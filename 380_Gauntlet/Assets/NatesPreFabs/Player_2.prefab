@@ -67,6 +67,30 @@ PrefabInstance:
       propertyPath: _Player2health
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1342457566626497783, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342457566626497783, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1909609966297626404}
+    - target: {fileID: 1342457566626497783, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342457566626497783, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342457566626497783, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342457566626497783, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1342457566626497785, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
       propertyPath: m_Name
       value: Player_2
@@ -81,3 +105,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 39991d10911a584429facfd3597ed39b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+--- !u!114 &1909609966297626404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1342457566626497782, guid: 64d2df75bec2fa949a9fbc9d87e3e272, type: 3}
+  m_PrefabInstance: {fileID: 585769418608997330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b2b93c3c2001842b532d5d70e815d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

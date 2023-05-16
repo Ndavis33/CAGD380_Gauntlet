@@ -11,19 +11,22 @@ public class Potion : MonoBehaviour
     public PlayerMovement playerMovement;
  
 
+
+    /*
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             //inventorySO.numPotions++;
-            
+           
             _user = other.gameObject;
            // ClearEnemies();
             this.gameObject.SetActive(false);
         }
     }
+    */
 
-    private void ClearEnemies()
+    public void ClearEnemies()
     {
         Camera cam = _user.GetComponentInChildren<Camera>();
         Collider[] hitColliders = Physics.OverlapSphere(cam.transform.position, range);
