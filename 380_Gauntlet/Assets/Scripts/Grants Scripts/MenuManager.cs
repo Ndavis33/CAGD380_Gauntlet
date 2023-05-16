@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public Text avatar1Text, avatar2Text, avatar3Text, avatar4Text;
     public Button p1Forward, p1Back, p2Forward, p2Back, p3Forward, p3Back, p4Forward, p4Back, playButton;
 
+    public PlayerSO valkSO, elfSO, wizardSO, warriorSO;
   
     public Transform player1Spawn;
     public Transform player2Spawn;
@@ -245,15 +246,33 @@ public class MenuManager : MonoBehaviour
         else return _yellow;
     }
 
-    private string GetPlayerType(Color avatarColor)
+    private string GetPlayerType(Color avatarColor, PlayerMovement player)
     {
         if (avatarColor == _red)
+        {
+            player.BasePlayer = warriorSO;
             return "Warrior";
+
+        }
+
         else if (avatarColor == _blue)
+        {
+            player.BasePlayer = valkSO;
             return "Valkyrie";
+
+        }
+
         else if (avatarColor == _yellow)
+        {
+            player.BasePlayer = wizardSO;
             return "Wizard";
-        else return "Elf";
+
+        }
+        else 
+        {
+            player.BasePlayer = elfSO;
+            return "Elf";
+        }
     }
 
     public void Player1Forward()
@@ -261,7 +280,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = NextMat(avatar1);
         avatar1.GetComponent<Renderer>().material.color = avatarColor;
-        avatar1Text.text = GetPlayerType(avatarColor);
+        avatar1Text.text = GetPlayerType(avatarColor, avatar1.gameObject.GetComponent<PlayerMovement>());
 
     }
 
@@ -270,7 +289,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = LastMat(avatar1);
         avatar1.GetComponent<Renderer>().material.color = avatarColor;
-        avatar1Text.text = GetPlayerType(avatarColor);
+        avatar1Text.text = GetPlayerType(avatarColor, avatar1.gameObject.GetComponent<PlayerMovement>());
     }
 
     public void Player2Forward()
@@ -278,7 +297,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = NextMat(avatar2);
         avatar2.GetComponent<Renderer>().material.color = avatarColor;
-        avatar2Text.text = GetPlayerType(avatarColor);
+        avatar2Text.text = GetPlayerType(avatarColor, avatar2.gameObject.GetComponent<PlayerMovement>());
     }
 
     public void Player2Backward()
@@ -286,7 +305,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = LastMat(avatar2);
         avatar2.GetComponent<Renderer>().material.color = avatarColor;
-        avatar2Text.text = GetPlayerType(avatarColor);
+        avatar2Text.text = GetPlayerType(avatarColor, avatar2.gameObject.GetComponent<PlayerMovement>());
     }
 
     public void Player3Forward()
@@ -294,7 +313,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = NextMat(avatar3);
         avatar3.GetComponent<Renderer>().material.color = avatarColor;
-        avatar3Text.text = GetPlayerType(avatarColor);
+        avatar3Text.text = GetPlayerType(avatarColor, avatar3.gameObject.GetComponent<PlayerMovement>());
     }
 
     public void Player3Backward()
@@ -302,7 +321,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = LastMat(avatar3);
         avatar3.GetComponent<Renderer>().material.color = avatarColor;
-        avatar3Text.text = GetPlayerType(avatarColor);
+        avatar3Text.text = GetPlayerType(avatarColor, avatar3.gameObject.GetComponent<PlayerMovement>());
     }
 
     public void Player4Forward()
@@ -310,7 +329,7 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = NextMat(avatar4);
         avatar4.GetComponent<Renderer>().material.color = avatarColor;
-        avatar4Text.text = GetPlayerType(avatarColor);
+        avatar4Text.text = GetPlayerType(avatarColor, avatar4.gameObject.GetComponent<PlayerMovement>());
     }
 
     public void Player4Backward()
@@ -318,6 +337,6 @@ public class MenuManager : MonoBehaviour
         Color avatarColor;
         avatarColor = LastMat(avatar4);
         avatar4.GetComponent<Renderer>().material.color = avatarColor;
-        avatar4Text.text = GetPlayerType(avatarColor);
+        avatar4Text.text = GetPlayerType(avatarColor, avatar4.gameObject.GetComponent<PlayerMovement>());
     }
 }

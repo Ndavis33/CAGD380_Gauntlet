@@ -3,7 +3,38 @@ guid: 1807c21a88873424e8d8400556fd8b87
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - redMat: {instanceID: 0}
+  - blueMat: {instanceID: 0}
+  - yellowMat: {instanceID: 0}
+  - greenMat: {instanceID: 0}
+  - avatar1: {instanceID: 0}
+  - avatar2: {instanceID: 0}
+  - avatar3: {instanceID: 0}
+  - avatar4: {instanceID: 0}
+  - avatar1Text: {instanceID: 0}
+  - avatar2Text: {instanceID: 0}
+  - avatar3Text: {instanceID: 0}
+  - avatar4Text: {instanceID: 0}
+  - p1Forward: {instanceID: 0}
+  - p1Back: {instanceID: 0}
+  - p2Forward: {instanceID: 0}
+  - p2Back: {instanceID: 0}
+  - p3Forward: {instanceID: 0}
+  - p3Back: {instanceID: 0}
+  - p4Forward: {instanceID: 0}
+  - p4Back: {instanceID: 0}
+  - playButton: {instanceID: 0}
+  - valkSO: {fileID: 11400000, guid: 7c2d43de2730ee84c81640277bf97857, type: 2}
+  - elfSO: {fileID: 11400000, guid: b411c584471fd9543b59380bc2fd099b, type: 2}
+  - wizardSO: {fileID: 11400000, guid: 4b6207b8a252c45469c742eac699210f, type: 2}
+  - warriorSO: {fileID: 11400000, guid: bdfe0a92ada38fa45b9379b802f7c26e, type: 2}
+  - player1Spawn: {instanceID: 0}
+  - player2Spawn: {instanceID: 0}
+  - player3Spawn: {instanceID: 0}
+  - player4Spawn: {instanceID: 0}
+  - mainCamera: {instanceID: 0}
+  - MainMenu: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

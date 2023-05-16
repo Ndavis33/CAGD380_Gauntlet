@@ -580,6 +580,10 @@ MonoBehaviour:
   p4Forward: {fileID: 2102769078}
   p4Back: {fileID: 1651630829}
   playButton: {fileID: 506835595}
+  valkSO: {fileID: 11400000, guid: 7c2d43de2730ee84c81640277bf97857, type: 2}
+  elfSO: {fileID: 11400000, guid: b411c584471fd9543b59380bc2fd099b, type: 2}
+  wizardSO: {fileID: 11400000, guid: 4b6207b8a252c45469c742eac699210f, type: 2}
+  warriorSO: {fileID: 11400000, guid: bdfe0a92ada38fa45b9379b802f7c26e, type: 2}
   player1Spawn: {fileID: 2050529745}
   player2Spawn: {fileID: 262065534}
   player3Spawn: {fileID: 547464703}
