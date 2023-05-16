@@ -407,6 +407,22 @@ PrefabInstance:
       propertyPath: _Player4health
       value: 
       objectReference: {fileID: 2060583711}
+    - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
+      propertyPath: Potions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
+      propertyPath: Potions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1923653860}
+    - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
+      propertyPath: Potions.Array.data[1]
+      value: 
+      objectReference: {fileID: 749123329}
+    - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
+      propertyPath: Potions.Array.data[2]
+      value: 
+      objectReference: {fileID: 796021801}
     - target: {fileID: 1909609966297626405, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -497,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1909609966297626411, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: m_Name
-      value: Warrior Variant
+      value: Player_4
       objectReference: {fileID: 0}
     - target: {fileID: 1909609966297626411, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: m_IsActive
@@ -547,7 +563,7 @@ MonoBehaviour:
   blueMat: {fileID: 2100000, guid: e835be9454836e84097a79e800047308, type: 2}
   yellowMat: {fileID: 2100000, guid: 44fc93841d4454d46aabdf19289dead3, type: 2}
   greenMat: {fileID: 2100000, guid: eab52685e556b1444a5db75354cf848a, type: 2}
-  avatar1: {fileID: 0}
+  avatar1: {fileID: 278761362}
   avatar2: {fileID: 1693518354}
   avatar3: {fileID: 359979838}
   avatar4: {fileID: 1621337711}
@@ -1722,6 +1738,11 @@ Transform:
   m_Father: {fileID: 1671126658}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &278761362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4102454228801008712, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+  m_PrefabInstance: {fileID: 1232539576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &314998877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2329,6 +2350,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3519681273341129730, guid: e012b6f411be28b4da62eda90f470aa2, type: 3}
   m_PrefabInstance: {fileID: 436922884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &453854290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1780554745, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &492387363
 PrefabInstance:
@@ -3419,6 +3445,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &749123329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1997180386, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &767123783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3488,6 +3519,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3519681273341129730, guid: e012b6f411be28b4da62eda90f470aa2, type: 3}
   m_PrefabInstance: {fileID: 767123783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &796021801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1694274133, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &820619220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 793363780, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &838259182
 GameObject:
@@ -3881,6 +3922,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924767321}
   m_CullTransparentMesh: 1
+--- !u!1 &930437929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 45232212, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &934397146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4207,7 +4253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180675, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_Name
-      value: Elf Variant
+      value: Player_2
       objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_Enabled
@@ -4229,6 +4275,22 @@ PrefabInstance:
       propertyPath: _Player4health
       value: 
       objectReference: {fileID: 2060583711}
+    - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: Potions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: Potions.Array.data[0]
+      value: 
+      objectReference: {fileID: 2052228432}
+    - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: Potions.Array.data[1]
+      value: 
+      objectReference: {fileID: 2120335851}
+    - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: Potions.Array.data[2]
+      value: 
+      objectReference: {fileID: 2013497489}
     - target: {fileID: 8820973630925180685, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: m_DefaultControlScheme
       value: 
@@ -4993,6 +5055,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6646147235880621782, guid: 1a408c2965aa869419f25cb51f1178b8, type: 3}
   m_PrefabInstance: {fileID: 1063020889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1070510090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 411659962, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1072258598
 GameObject:
@@ -6041,9 +6108,25 @@ PrefabInstance:
       propertyPath: _Player4health
       value: 
       objectReference: {fileID: 2060583711}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Potions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Potions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1787448079}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Potions.Array.data[1]
+      value: 
+      objectReference: {fileID: 930437929}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: Potions.Array.data[2]
+      value: 
+      objectReference: {fileID: 820619220}
     - target: {fileID: 4102454228801008712, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: m_Name
-      value: Valkyrie Variant
+      value: Player_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
@@ -7511,7 +7594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 348118562471628039, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_Name
-      value: Wizard Variant
+      value: Player_3
       objectReference: {fileID: 0}
     - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_Enabled
@@ -7533,6 +7616,22 @@ PrefabInstance:
       propertyPath: _Player4health
       value: 
       objectReference: {fileID: 2060583711}
+    - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: Potions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: Potions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1838179953}
+    - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: Potions.Array.data[1]
+      value: 
+      objectReference: {fileID: 453854290}
+    - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: Potions.Array.data[2]
+      value: 
+      objectReference: {fileID: 1070510090}
     - target: {fileID: 348118562471628041, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: m_DefaultControlScheme
       value: 
@@ -9030,6 +9129,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1787448079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1641226082, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1817700597
 GameObject:
   m_ObjectHideFlags: 0
@@ -9294,6 +9398,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820146021}
   m_CullTransparentMesh: 1
+--- !u!1 &1838179953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2123064016, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1858925711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9636,6 +9745,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3519681273341129730, guid: e012b6f411be28b4da62eda90f470aa2, type: 3}
   m_PrefabInstance: {fileID: 1911241009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1923653860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 401429990, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1936720166
 GameObject:
@@ -10072,6 +10186,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993531080}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2013497489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2048610260, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2013897790
 GameObject:
   m_ObjectHideFlags: 0
@@ -10281,6 +10400,11 @@ Transform:
   m_Father: {fileID: 1671126658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052228432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1347292306, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2060583711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2327761750486105783, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
@@ -10573,6 +10697,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102769076}
   m_CullTransparentMesh: 1
+--- !u!1 &2120335851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1394613155, guid: 59e52b5e12ecd7f4e965c1ac0f65406a, type: 3}
+  m_PrefabInstance: {fileID: 1347471687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2134362934
 PrefabInstance:
   m_ObjectHideFlags: 0

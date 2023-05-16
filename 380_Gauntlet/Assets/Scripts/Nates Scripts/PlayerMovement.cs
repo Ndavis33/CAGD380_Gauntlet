@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isThrowing = false;
     public bool HasPotion = false;
 
-    private float range;
+    private float range = 15;
 
     public List<GameObject> Potions;
 
@@ -73,19 +73,19 @@ public class PlayerMovement : MonoBehaviour
   public void updateHealth()
     {
 
-        if (this.gameObject.name == "Warrior Variant")
+        if (this.gameObject.name == "Player_1")
         {
             _Player1health.text = "Player 1 Health:" + playerHealth.ToString();
         }
-        if (this.gameObject.name == "Valkyrie Variant")
+        if (this.gameObject.name == "Player_2")
         {
             _Player2health.text = "Player 2 Health:" + playerHealth.ToString();
         }
-        if (this.gameObject.name == "Wizard Variant")
+        if (this.gameObject.name == "Player_3")
         {
             _Player3health.text = "Player 3 Health:" + playerHealth.ToString();
         }
-        if (this.gameObject.name == "Elf Variant")
+        if (this.gameObject.name == "Player_4")
         {
             _Player4health.text = "Player 4 Health:" + playerHealth.ToString();
         }
