@@ -6,6 +6,9 @@ public class Narrator : MonoBehaviour
 {
     public AudioSource firstHit, keyPickup, stickThrown, foodPickup, potionPickup, treasurePickup, level1, level2, level3, lowOnHealth, warrior, wizard, valkyrie, elf;
 
+    [SerializeField]
+    [Tooltip("Warns the player when they fall below this amount of health")]
+    private int _healthWarning;
     private AudioSource playerType;
     private PlayerSO _playerSO;
     private PlayerMovement _player;
@@ -17,19 +20,20 @@ public class Narrator : MonoBehaviour
     private static bool _isFirstFood = true;
     private static bool _isFirstMovement = true;
     private bool _canWarn = true;
+    private bool _initialized;
 
-    private void Awake()
+    public void Init()
     {
-        _player = gameObject.GetComponent<PlayerMovement>();
-        _playerSO = _player.BasePlayer;
+        Debug.Log("Initializing...");
+        _player = this.gameObject.GetComponent<PlayerMovement>();
 
-        switch (_playerSO.name)
+        switch (_player.BasePlayer.name)
         {
             case "Elf":
                 playerType = elf;
                 break;
 
-            case "Valkyrie":
+            case "Valkryie":
                 playerType = valkyrie;
                 break;
 
@@ -42,35 +46,43 @@ public class Narrator : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("Player Type: " + _playerSO.name);
+                Debug.Log("Player Type Not Found");
                 break;
         }
+
+        Debug.Log("Player Type: " + _player.BasePlayer.name);
+        Debug.Log("Player: " + _player);
+        _initialized = true;
     }
 
     private void Update()
     {
-        if (_player.isThrowing && _isFirstAttack)
+        if (_initialized)
         {
-            _isFirstAttack = false;
-            stickThrown.Play();
-        }
-
-        if(_player.playerHealth < 200)
-        {
-            if (_canWarn)
+            if (_player.isThrowing && _isFirstAttack)
             {
-                _canWarn = false;
-                StartCoroutine(HealthWarning());               
-            }            
-        }
+                _isFirstAttack = false;
+                stickThrown.Play();
+            }
 
-        if (_player.playerHealth > 200)
-            _canWarn = true;
+            if (_player.playerHealth < 200)
+            {
+                if (_canWarn)
+                {
+                    _canWarn = false;
+                    StartCoroutine(HealthWarning());
+                }
+            }
 
-        if (_player.isMoving && _isFirstMovement)
-        {
-            _isFirstMovement = false;
-            level1.Play();
+            if (_player.playerHealth > _healthWarning)
+                _canWarn = true;
+
+            if (_player.isMoving && _isFirstMovement)
+            {
+                _isFirstMovement = false;
+                level1.Play();
+            }
+
         }
     }
 
