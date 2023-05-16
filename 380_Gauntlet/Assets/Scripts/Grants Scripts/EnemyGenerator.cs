@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyGenerator : MonoBehaviour
 {
+    private List<EnemyGenerator> _generators = new List<EnemyGenerator>();
     public EnemyScriptableObject enemySO;
 
     private Vector3 _spawnPos;
@@ -22,10 +23,23 @@ public class EnemyGenerator : MonoBehaviour
         _spawnPos += _spawnOffset;
 
     }
-
+    
     public void OnPlayButton()
     {
+        foreach (EnemyGenerator generator in GameObject.FindObjectsOfType<EnemyGenerator>())
+        {
+            _generators.Add(generator);
+        }
+
+        foreach (EnemyGenerator generator in _generators)
+        {
+            generator.Init();
+        }
+    }
+    private void Init()
+    {
         //_spawnStarted = true;
+        Debug.Log("Generating...");
         StartCoroutine("GenerateSpawns", _spawnRate);
     }
 
