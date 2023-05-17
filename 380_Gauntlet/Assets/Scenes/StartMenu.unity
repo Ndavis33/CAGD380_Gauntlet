@@ -249,6 +249,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013897791}
     m_Modifications:
+    - target: {fileID: -3189651852898964694, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7314401506888167796, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
       propertyPath: m_Name
       value: Treasure (1)
@@ -568,6 +572,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 415676021}
     - target: {fileID: 1621337712, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
+      propertyPath: _healthWarning
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621337712, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: treasurePickup
       value: 
       objectReference: {fileID: 1013260686}
@@ -583,6 +591,10 @@ PrefabInstance:
       propertyPath: Level_3
       value: 
       objectReference: {fileID: 156549108}
+    - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
+      propertyPath: playerHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1909609966297626404, guid: fcdd13c29a85c4647a90af43250d9587, type: 3}
       propertyPath: playerScore_1
       value: 
@@ -1504,7 +1516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &172429601
 Transform:
   m_ObjectHideFlags: 0
@@ -1753,6 +1765,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013897791}
     m_Modifications:
+    - target: {fileID: -3189651852898964694, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7314401506888167796, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
       propertyPath: m_Name
       value: Treasure
@@ -3029,6 +3045,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 156549109}
     m_Modifications:
+    - target: {fileID: -3189651852898964694, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7314401506888167796, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
       propertyPath: m_Name
       value: Treasure (2)
@@ -6271,6 +6291,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 415676021}
     - target: {fileID: 1693518356, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: _healthWarning
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693518356, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: treasurePickup
       value: 
       objectReference: {fileID: 1013260686}
@@ -6290,6 +6314,10 @@ PrefabInstance:
       propertyPath: Level_3
       value: 
       objectReference: {fileID: 156549108}
+    - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+      propertyPath: playerHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8820973630925180684, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
       propertyPath: playerScore_1
       value: 
@@ -6378,7 +6406,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6983439174061170264, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
+    - {fileID: 4793163344161538279, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cf8995dfe08ecd14392bf832f14d24ff, type: 3}
 --- !u!20 &991881677 stripped
 Camera:
@@ -8398,6 +8428,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 415676021}
     - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: _healthWarning
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 230013868, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: treasurePickup
       value: 
       objectReference: {fileID: 1013260686}
@@ -8458,6 +8492,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 156549108}
     - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
+      propertyPath: playerHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102454228801008711, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
       propertyPath: playerScore_1
       value: 
       objectReference: {fileID: 1674765607}
@@ -8505,7 +8543,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2481083478782715155, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ffd8f7e2bbb21984298d833f79ad7566, type: 3}
 --- !u!1 &1232614449
 GameObject:
@@ -9176,6 +9215,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 156549109}
     m_Modifications:
+    - target: {fileID: -3189651852898964694, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7314401506888167796, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
       propertyPath: m_Name
       value: Treasure (3)
@@ -9534,6 +9577,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 156549109}
     m_Modifications:
+    - target: {fileID: -3189651852898964694, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7314401506888167796, guid: 303a409450978c14eac34fad2a258f9c, type: 3}
       propertyPath: m_Name
       value: Treasure
@@ -10685,6 +10732,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 415676021}
     - target: {fileID: 359979840, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: _healthWarning
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 359979840, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: treasurePickup
       value: 
       objectReference: {fileID: 1013260686}
@@ -10704,6 +10755,10 @@ PrefabInstance:
       propertyPath: Level_3
       value: 
       objectReference: {fileID: 156549108}
+    - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
+      propertyPath: playerHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 348118562471628040, guid: 289d444171ba886459eefbf41844e575, type: 3}
       propertyPath: playerScore_1
       value: 
@@ -10792,7 +10847,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4339811557897224931, guid: 289d444171ba886459eefbf41844e575, type: 3}
+    - {fileID: 2185529881415375964, guid: 289d444171ba886459eefbf41844e575, type: 3}
+    - {fileID: 9132920939208787984, guid: 289d444171ba886459eefbf41844e575, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 289d444171ba886459eefbf41844e575, type: 3}
 --- !u!20 &1559404556 stripped
 Camera:
@@ -12250,7 +12308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1769503427
 Transform:
   m_ObjectHideFlags: 0
@@ -12278,7 +12336,7 @@ Transform:
   - {fileID: 1337493713}
   - {fileID: 1599695409}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787448079 stripped
 GameObject:
